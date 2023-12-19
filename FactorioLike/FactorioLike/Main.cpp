@@ -1,4 +1,9 @@
 #include "GameManager.h"
+#include "InputManager.h"
+void Move(const int _deltaX,const int _deltaY)
+{
+	
+}
 
 int main() {
 
@@ -14,6 +19,21 @@ int main() {
 
 	GameManager _game;
 	_game.GetInstance(); // start
+
+	
+	InputManager _input;
+
+
+	_input.AddKeybind({'z'}, [&]() {Move(1,0); });
+	_input.AddKeybind({'s'}, [&]() {Move(0,1); });
+	_input.AddKeybind({'d'}, [&]() {Move(-1,0); });
+	_input.AddKeybind({'q'}, [&]() {Move(0,-1); });
+
+	do
+	{
+	_input.Tick();
+
+	} while (true);
 
 	return 0;
 }
