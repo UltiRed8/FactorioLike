@@ -1,6 +1,7 @@
 #include "GameManager.h"
 
-int main() {
+int main()
+{
 
 	// map 250*250
 	// viewport 26*26
@@ -12,8 +13,7 @@ int main() {
 	// ressources
 	// machines (miner, smelter, foundry, constructor)
 
-	GameManager _game;
-	_game.GetInstance(); // start
+	GameManager::GetInstance().Start();
 
 	return 0;
 }
