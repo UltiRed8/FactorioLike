@@ -1,5 +1,33 @@
 #pragma once
-class Player
+#include "InputManager.h"
+#include "Entity.h"
+
+using namespace std;
+
+class Player : public Entity
 {
+	ProgessBar hunger;
+	ProgessBar thirst;
+
+public:
+	Player();
+	Player(const float _maxHunger, const float _maxThirst,const float _maxHp);
+
+public:
+
+	float GetHunger() const 
+	{
+		return hunger.currentValue;
+	}
+
+	float GetThirst() const 
+	{
+		return thirst.currentValue;
+	}
+
+public:
+	void UpdateVital(const VitalType& _type, const float _amount) override;
+private:
+	void UpdateVital(const float _amount,ProgessBar& _value);
 };
 
