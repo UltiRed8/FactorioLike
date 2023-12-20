@@ -10,12 +10,14 @@ Entity::Entity(const float _maxHp) : Element()
 
 void Entity::Move(const Location& _deltaLoc)
 {
-	//bool _updateLoc = GameManager::GetInstance().GetMap()->MoveElement(location,location + _deltaLoc);
+	Location _newLocation = location;
+	_newLocation += _deltaLoc;
+	bool _updateLoc = GameManager::GetInstance().GetMap()->MoveElement(location,_newLocation);
 
-	/*if (_updateLoc)
+	if (_updateLoc)
 	{
-		location += _deltaLoc;
-	}*/
+		location = _newLocation;
+	}
 }
 
 void Entity::DisplayStatistics(const bool _top, const bool _bottom) const {

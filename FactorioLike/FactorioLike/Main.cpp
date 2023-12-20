@@ -38,11 +38,14 @@ int main()
 	//
 	// epée lourde en fer
 
-	/*Player* _player = new Player();
+	Player* _player = new Player();
 	_player->DisplayStatistics(true);
+	do
+	{
+		InputManager::GetInstance().Tick();
+	} while (true);
 	delete _player;
-
-	return 0;*/
+	return 0;
 
 	GameManager::GetInstance().Start();
 

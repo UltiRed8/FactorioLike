@@ -2,11 +2,14 @@
 
 Player::Player() : Entity() 
 {
-	InputManager _manager= InputManager::GetInstance();
-	/*_manager.AddKeybind({ 'z', 72 }, [&]() { Move({ -1, 0 }); });
+	inventory.AddItem(new Item("Heavy Iron Sword"), 1);
+	
+	InputManager& _manager= InputManager::GetInstance();
+	_manager.AddKeybind({ 'z', 72 }, [&]() { Move({ -1, 0 }); });
 	_manager.AddKeybind({ 'q', 75 }, [&]() { Move({ 0, -1 }); });
 	_manager.AddKeybind({ 's', 80 }, [&]() { Move({ 0, 1 }); });
-	_manager.AddKeybind({ 'd', 77 }, [&]() { Move({ 1, 0 }); });*/
+	_manager.AddKeybind({ 'd', 77 }, [&]() { Move({ 1, 0 }); });
+	_manager.AddKeybind({ 'e' }, [&]() { inventory.DisplayInventory(); });
 }
 
 Player::Player(const float _maxHunger, const float _maxThirst, const float _maxHp) : Entity(_maxHp)

@@ -2,7 +2,7 @@
 
 #include "Element.h"
 #include "Macros.h"
-
+#include "GameManager.h"
 #include <iostream>
 
 using namespace std;
@@ -15,7 +15,7 @@ enum VitalType
 struct ProgessBar
 {
 	float maxValue = 100;
-	float currentValue = 50;
+	float currentValue = 100;
 
 public:
 	void Display(const string& _title, const wchar_t& _filledChar, const int _arrowLenght, const int _barLenght) const {

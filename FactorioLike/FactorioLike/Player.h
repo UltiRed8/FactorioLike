@@ -1,5 +1,6 @@
 #pragma once
 #include "InputManager.h"
+#include "Inventory.h"
 #include "Entity.h"
 
 
@@ -7,6 +8,7 @@ using namespace std;
 
 class Player : public Entity
 {
+	Inventory inventory;
 	ProgessBar hunger;
 	ProgessBar thirst;
 
