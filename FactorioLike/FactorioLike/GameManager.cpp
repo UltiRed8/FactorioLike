@@ -3,7 +3,7 @@
 GameManager::GameManager()
 {
 	lastUpdatedTick = uint64_t();
-	map = new Map(15);
+	map = new Map(250);
 	ticksAmount = 20;
 }
 
@@ -27,10 +27,6 @@ void GameManager::Tick()
 
 void GameManager::Start()
 {
-	/*_manager.AddKeybind({ 72 }, [&]() { cout << "up" << endl; });
-	_manager.AddKeybind({ 80 }, [&]() { cout << "down" << endl; });
-	_manager.AddKeybind({ 75 }, [&]() { cout << "left" << endl; });
-	_manager.AddKeybind({ 77 }, [&]() { cout << "right" << endl; });*/
 	Loop();
 }
 
