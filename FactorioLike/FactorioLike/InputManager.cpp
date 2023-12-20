@@ -1,6 +1,6 @@
 #include "InputManager.h"
 
-void InputManager::AddKeybind(const vector<char>& _keys,const function<void()>& _callback)
+void InputManager::AddKeybind(const vector<char>& _keys, const function<void()>& _callback)
 {
     keybinds[_keys] = _callback;
 }

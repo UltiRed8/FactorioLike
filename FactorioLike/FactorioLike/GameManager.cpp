@@ -27,6 +27,10 @@ void GameManager::Tick()
 
 void GameManager::Start()
 {
+	/*_manager.AddKeybind({ 72 }, [&]() { cout << "up" << endl; });
+	_manager.AddKeybind({ 80 }, [&]() { cout << "down" << endl; });
+	_manager.AddKeybind({ 75 }, [&]() { cout << "left" << endl; });
+	_manager.AddKeybind({ 77 }, [&]() { cout << "right" << endl; });*/
 	Loop();
 }
 

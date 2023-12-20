@@ -7,14 +7,6 @@
 
 using namespace std;
 
-// TODO a enlever après le merge main
-struct Location
-{
-	int _posX = 0;
-	int _posY = 0;
-};
-// TODO a enlever après le merge main
-
 class Map
 {
 	int viewDistance;

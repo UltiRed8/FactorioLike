@@ -2,7 +2,7 @@
 #include "InputManager.h"
 void Move(const int _deltaX,const int _deltaY)
 {
-	
+	cout << "moved" << endl;
 }
 
 int main()
@@ -19,21 +19,6 @@ int main()
 	// machines (miner, smelter, foundry, constructor)
 
 	GameManager::GetInstance().Start();
-
-	
-	InputManager _input;
-
-
-	_input.AddKeybind({'z'}, [&]() {Move(1,0); });
-	_input.AddKeybind({'s'}, [&]() {Move(0,1); });
-	_input.AddKeybind({'d'}, [&]() {Move(-1,0); });
-	_input.AddKeybind({'q'}, [&]() {Move(0,-1); });
-
-	do
-	{
-	_input.Tick();
-
-	} while (true);
 
 	return 0;
 }

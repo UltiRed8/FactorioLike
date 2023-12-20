@@ -4,6 +4,7 @@
 #include "Map.h"
 
 #include <chrono>
+#include "InputManager.h"
 
 using namespace std::chrono;
 
