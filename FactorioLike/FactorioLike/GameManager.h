@@ -15,6 +15,12 @@ class GameManager : public Singleton<GameManager>
 	float ticksAmount;
 
 public:
+	Map* GetMap() const
+	{
+		return map;
+	}
+
+public:
 	GameManager();
 	~GameManager();
 

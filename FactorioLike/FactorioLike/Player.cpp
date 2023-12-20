@@ -3,10 +3,10 @@
 Player::Player() : Entity() 
 {
 	InputManager _manager= InputManager::GetInstance();
-	_manager.AddKeybind({ 'z' }, [&]() {Move({1,0}); });
-	_manager.AddKeybind({ 'q' }, [&]() {Move({0,-1}); });
-	_manager.AddKeybind({ 's' }, [&]() {Move({0,1}); });
-	_manager.AddKeybind({ 'd' }, [&]() {Move({-1,0}); });
+	_manager.AddKeybind({ 'z' ,72}, [&]() {Move({-1,0}); });
+	_manager.AddKeybind({ 'q' ,75}, [&]() {Move({0,-1}); });
+	_manager.AddKeybind({ 's' ,80}, [&]() {Move({0, 1}); });
+	_manager.AddKeybind({ 'd' ,77}, [&]() {Move({1, 0}); });
 }
 
 Player::Player(const float _maxHunger, const float _maxThirst, const float _maxHp) : Entity(_maxHp)

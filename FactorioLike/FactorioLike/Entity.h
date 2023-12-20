@@ -1,4 +1,5 @@
 #pragma once
+#include "GameManager.h"
 #include "Element.h"
 
 enum VitalType

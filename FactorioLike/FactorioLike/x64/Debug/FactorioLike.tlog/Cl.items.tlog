@@ -1,15 +1,13 @@
-F:\github\FactorioLike\FactorioLike\FactorioLike\Buildable.cpp;F:\github\FactorioLike\FactorioLike\FactorioLike\x64\Debug\Buildable.obj
-F:\github\FactorioLike\FactorioLike\FactorioLike\Consumable.cpp;F:\github\FactorioLike\FactorioLike\FactorioLike\x64\Debug\Consumable.obj
-F:\github\FactorioLike\FactorioLike\FactorioLike\Element.cpp;F:\github\FactorioLike\FactorioLike\FactorioLike\x64\Debug\Element.obj
-F:\github\FactorioLike\FactorioLike\FactorioLike\Entity.cpp;F:\github\FactorioLike\FactorioLike\FactorioLike\x64\Debug\Entity.obj
-F:\github\FactorioLike\FactorioLike\FactorioLike\FileManager.cpp;F:\github\FactorioLike\FactorioLike\FactorioLike\x64\Debug\FileManager.obj
-F:\github\FactorioLike\FactorioLike\FactorioLike\GameManager.cpp;F:\github\FactorioLike\FactorioLike\FactorioLike\x64\Debug\GameManager.obj
-F:\github\FactorioLike\FactorioLike\FactorioLike\InputManager.cpp;F:\github\FactorioLike\FactorioLike\FactorioLike\x64\Debug\InputManager.obj
-F:\github\FactorioLike\FactorioLike\FactorioLike\Inventory.cpp;F:\github\FactorioLike\FactorioLike\FactorioLike\x64\Debug\Inventory.obj
-F:\github\FactorioLike\FactorioLike\FactorioLike\Item.cpp;F:\github\FactorioLike\FactorioLike\FactorioLike\x64\Debug\Item.obj
-F:\github\FactorioLike\FactorioLike\FactorioLike\Macros.h;F:\github\FactorioLike\FactorioLike\FactorioLike\x64\Debug\Macros.obj
-F:\github\FactorioLike\FactorioLike\FactorioLike\Main.cpp;F:\github\FactorioLike\FactorioLike\FactorioLike\x64\Debug\Main.obj
-F:\github\FactorioLike\FactorioLike\FactorioLike\Map.cpp;F:\github\FactorioLike\FactorioLike\FactorioLike\x64\Debug\Map.obj
-F:\github\FactorioLike\FactorioLike\FactorioLike\Player.cpp;F:\github\FactorioLike\FactorioLike\FactorioLike\x64\Debug\Player.obj
-F:\github\FactorioLike\FactorioLike\FactorioLike\Ressource.cpp;F:\github\FactorioLike\FactorioLike\FactorioLike\x64\Debug\Ressource.obj
-F:\github\FactorioLike\FactorioLike\FactorioLike\RessourceNode.cpp;F:\github\FactorioLike\FactorioLike\FactorioLike\x64\Debug\RessourceNode.obj
+C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\Buildable.cpp;C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\x64\Debug\Buildable.obj
+C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\Element.cpp;C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\x64\Debug\Element.obj
+C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\Entity.cpp;C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\x64\Debug\Entity.obj
+C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\FileManager.cpp;C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\x64\Debug\FileManager.obj
+C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\GameManager.cpp;C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\x64\Debug\GameManager.obj
+C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\InputManager.cpp;C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\x64\Debug\InputManager.obj
+C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\Inventory.cpp;C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\x64\Debug\Inventory.obj
+C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\Item.cpp;C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\x64\Debug\Item.obj
+C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\Macros.h;C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\x64\Debug\Macros.obj
+C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\Main.cpp;C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\x64\Debug\Main.obj
+C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\Map.cpp;C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\x64\Debug\Map.obj
+C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\Player.cpp;C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\x64\Debug\Player.obj
+C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\RessourceNode.cpp;C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\FactorioLike\x64\Debug\RessourceNode.obj
