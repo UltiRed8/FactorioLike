@@ -13,7 +13,7 @@ void Map::Init() {
 
 bool Map::IsEmptySpace(const Location& _location) const {
 	if (!IsInRange(_location)) return false;
-	return !grid[_location._posX][_location._posY];
+	return !grid[_location.posX][_location.posY];
 }
 
 vector<vector<Element*>> Map::GetViewport(const Location& _center) {
@@ -21,7 +21,7 @@ vector<vector<Element*>> Map::GetViewport(const Location& _center) {
 	vector<Element*> _line;
 	for (int _x = viewDistance*-1; _x < viewDistance+1; _x++) {
 		for (int _y = viewDistance*-1; _y < viewDistance+1; _y++) { {
-				_line.push_back(grid[_center._posX + _x][_center._posY + _y]);
+				_line.push_back(grid[_center.posX + _x][_center.posY + _y]);
 			}
 		}
 		_viewport.push_back(_line);
@@ -46,14 +46,14 @@ void Map::Display() {
 bool Map::MoveElement(const Location& _defaultLocation, const Location& _newLocation) {
 	if (!IsInRange(_defaultLocation)) return false;
 	if (!IsEmptySpace(_newLocation)) return false;
-	Element* _element = grid[_defaultLocation._posX][_defaultLocation._posY];
-	grid[_defaultLocation._posX][_defaultLocation._posY] = grid[_newLocation._posX][_newLocation._posY];
-	grid[_newLocation._posX][_newLocation._posY] = _element;
+	Element* _element = grid[_defaultLocation.posX][_defaultLocation.posY];
+	grid[_defaultLocation.posX][_defaultLocation.posY] = grid[_newLocation.posX][_newLocation.posY];
+	grid[_newLocation.posX][_newLocation.posY] = _element;
 	return true;
 }
 
 bool Map::IsInRange(const Location& _location) const {
-	return (_location._posX >= 0 && _location._posY >= 0) && (_location._posX < size && _location._posY < size);
+	return (_location.posX >= 0 && _location.posY >= 0) && (_location.posX < size && _location.posY < size);
 }
 
 void Map::Generate() {

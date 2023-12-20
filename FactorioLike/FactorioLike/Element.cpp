@@ -4,8 +4,8 @@ Element::Element() {}
 
 Location& operator+=(Location& _newLocation, const Location& _currentLocation)
 {
-	_newLocation._posX = _currentLocation._posX;
-	_newLocation._posY = _currentLocation._posY;
+	_newLocation.posX = _currentLocation.posX;
+	_newLocation.posY = _currentLocation.posY;
 
 	return _newLocation;
 }

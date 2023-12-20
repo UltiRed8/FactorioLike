@@ -2,8 +2,8 @@
 
 struct Location
 {
-	int _posX = 0;
-	int _posY = 0;
+	int posX = 0;
+	int posY = 0;
 };
 
 Location& operator += (Location& _newLocation, const Location& _currentLocation);

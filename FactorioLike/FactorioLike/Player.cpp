@@ -2,7 +2,12 @@
 
 Player::Player() : Entity() 
 {
-	inventory.AddItem(new Item("Heavy Iron Sword"), 1);
+	inventory.AddItem(new Item("Heavy"), 1);
+	inventory.AddItem(new Item("epee"), 52);
+	inventory.AddItem(new Item("water"), 5);
+	inventory.AddItem(new Item("stone"), 100);
+	inventory.AddItem(new Item("pickaxe"), 86);
+	inventory.AddItem(new Item("hache"), 18);
 	
 	InputManager& _manager= InputManager::GetInstance();
 	_manager.AddKeybind({ 'z', 72 }, [&]() { Move({ -1, 0 }); });
