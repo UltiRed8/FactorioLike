@@ -1,5 +1,11 @@
 #pragma once
+
 #include "Element.h"
+#include "Macros.h"
+
+#include <iostream>
+
+using namespace std;
 
 enum VitalType
 {
@@ -9,7 +15,21 @@ enum VitalType
 struct ProgessBar
 {
 	float maxValue = 100;
-	float currentValue = 100;
+	float currentValue = 50;
+
+public:
+	void Display(const string& _title, const wchar_t& _filledChar, const int _arrowLenght, const int _barLenght) const {
+		const int _progress = static_cast<const int>(currentValue / maxValue * _barLenght);
+		cout << "#> " << _title;
+		for (int _i = 0; _i < _arrowLenght; _i++) cout << "-";
+		cout << "> ";
+		for (int _i = 0; _i < _barLenght; _i++) {
+			if (_i <= _progress) {
+				SPECIALCHAR(_filledChar);
+			} else cout << "-";
+		}
+		cout << " #" << endl;
+	}
 };
 
 class Entity : public Element
@@ -35,5 +55,6 @@ public:
 public:
 	void Move(const Location& _deltaLoc);
 	virtual void UpdateVital(const VitalType& _type, const float _amount) = 0;
+	virtual void DisplayStatistics(const bool _top = true, const bool _bottom = true) const;
 };
 

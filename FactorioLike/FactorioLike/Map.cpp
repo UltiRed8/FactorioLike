@@ -1,28 +1,26 @@
 #include "Map.h"
 
-Map::Map(const int _size)
-{
+Map::Map(const int _size) {
 	size = _size;
 	viewDistance = 4;
 	Init();
 	Generate();
 }
 
-void Map::Init()
-{
+void Map::Init() {
 	grid.resize(size, vector<Element*>(size));
 }
 
-vector<vector<Element*>> Map::GetViewport(const Location& _center)
-{
+bool Map::IsEmptySpace(const Location& _location) const {
+	if (!IsInRange(_location)) return false;
+	return !grid[_location._posX][_location._posY];
+}
+
+vector<vector<Element*>> Map::GetViewport(const Location& _center) {
 	vector<vector<Element*>> _viewport;
 	vector<Element*> _line;
-	for (int _x = viewDistance*-1; _x < viewDistance+1; _x++)
-	{
-		for (int _y = viewDistance*-1; _y < viewDistance+1; _y++)
-		{
-			if (IsInRange({ _center._posX + _x, _center._posY + _y }))
-			{
+	for (int _x = viewDistance*-1; _x < viewDistance+1; _x++) {
+		for (int _y = viewDistance*-1; _y < viewDistance+1; _y++) { {
 				_line.push_back(grid[_center._posX + _x][_center._posY + _y]);
 			}
 		}
@@ -32,15 +30,11 @@ vector<vector<Element*>> Map::GetViewport(const Location& _center)
 	return _viewport;
 }
 
-void Map::Display()
-{
+void Map::Display() {
 	vector<vector<Element*>> _viewport = GetViewport({ 7, 7 });
-	for (int _x = 0; _x < viewDistance*2+1; _x++)
-	{
-		for (int _y = 0; _y < viewDistance*2+1; _y++)
-		{
-			if (IsInRange({ _x, _y }))
-			{
+	for (int _x = 0; _x < viewDistance*2+1; _x++) {
+		for (int _y = 0; _y < viewDistance*2+1; _y++) {
+			if (IsInRange({ _x, _y })) {
 				if (!_viewport[_x][_y]) cout << ". ";
 				else cout << _viewport[_x][_y] << " ";
 			}
@@ -49,17 +43,22 @@ void Map::Display()
 	}
 }
 
-bool Map::IsInRange(const Location& _location) const
-{
+bool Map::MoveElement(const Location& _defaultLocation, const Location& _newLocation) {
+	if (!IsInRange(_defaultLocation)) return false;
+	if (!IsEmptySpace(_newLocation)) return false;
+	Element* _element = grid[_defaultLocation._posX][_defaultLocation._posY];
+	grid[_defaultLocation._posX][_defaultLocation._posY] = grid[_newLocation._posX][_newLocation._posY];
+	grid[_newLocation._posX][_newLocation._posY] = _element;
+	return true;
+}
+
+bool Map::IsInRange(const Location& _location) const {
 	return (_location._posX >= 0 && _location._posY >= 0) && (_location._posX < size && _location._posY < size);
 }
 
-void Map::Generate()
-{
-	for (int _x = 0; _x < size; _x++)
-	{
-		for (int _y = 0; _y < size; _y++)
-		{
+void Map::Generate() {
+	for (int _x = 0; _x < size; _x++) {
+		for (int _y = 0; _y < size; _y++) {
 			// TODO
 		}
 	}

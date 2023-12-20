@@ -2,6 +2,7 @@
 #include "InputManager.h"
 #include "Entity.h"
 
+
 using namespace std;
 
 class Player : public Entity
@@ -24,10 +25,11 @@ public:
 	{
 		return thirst.currentValue;
 	}
+private:
+	void UpdateVital(const float _amount, ProgessBar& _value);
 
 public:
 	void UpdateVital(const VitalType& _type, const float _amount) override;
-private:
-	void UpdateVital(const float _amount,ProgessBar& _value);
+	virtual void DisplayStatistics(const bool _top = true, const bool _bottom = true) const override;
 };
 
