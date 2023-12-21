@@ -45,8 +45,8 @@ void Player::UpdateVital(const VitalType& _type, const float _amount)
 
 void Player::DisplayStatistics(const bool _top, const bool _bottom) const {
 	if (_top) cout << "##################################" << endl;
-	hp.Display("HUNGER", '@', 1, 20);
-	hp.Display("THIRST", '@', 1, 20);
+	hunger.Display("HUNGER", '@', 1, 20);
+	thirst.Display("THIRST", '@', 1, 20);
 	Entity::DisplayStatistics(false, _bottom);
 }
 

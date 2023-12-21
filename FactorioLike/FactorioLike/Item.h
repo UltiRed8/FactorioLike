@@ -28,7 +28,7 @@ public:
 
 struct Ressource : public Item
 {
-	RessourceType type;
+	string type;
 
 public:
 	Ressource() : Item()
@@ -36,7 +36,7 @@ public:
 		type = RT_NONE;
 	}
 
-	Ressource(RessourceType _type,const string& _name) : Item(_name)
+	Ressource(const string& _type,const string& _name) : Item(_name)
 	{
 		type = _type;
 	}

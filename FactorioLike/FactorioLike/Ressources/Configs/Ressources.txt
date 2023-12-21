@@ -1,0 +1,7 @@
+wood:Bois
+stick:Baton
+stone:Pierre
+coal:Charbon
+iron_ore:Minerais de fer
+iron_ingot:L'ingot de fer
+irond_rod:Tige de fer 

@@ -1,4 +1,6 @@
 #include "GameManager.h"
+#include "Element.h"
+#include "FileManager.h"
 #include "InputManager.h"
 #include "Player.h"
 
@@ -47,7 +49,14 @@ int main()
 	delete _player;
 	return 0;*/
 
-	GameManager::GetInstance().Start();
-
+	//GameManager::GetInstance().Start();
+	try
+	{
+		FileManager::GetInstance().LoadConfig<Ressource>("Generation.txt");
+	}
+	catch (const std::exception& _error)
+	{
+		cerr << _error.what();
+	}
 	return 0;
 }

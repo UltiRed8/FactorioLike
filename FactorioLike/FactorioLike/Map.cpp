@@ -59,7 +59,7 @@ bool Map::IsInRange(const Location& _location) const {
 void Map::Generate() {
 	for (int _x = 0; _x < size; _x++) {
 		for (int _y = 0; _y < size; _y++) {
-			// TODO
+			
 		}
 	}
 }
