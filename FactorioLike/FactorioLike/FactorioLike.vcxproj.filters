@@ -95,5 +95,11 @@
     <ClInclude Include="ItemType.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="Location.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Colors.h">
+      <Filter>Fichiers de ressources</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

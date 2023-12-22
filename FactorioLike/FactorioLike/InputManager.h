@@ -20,4 +20,3 @@ public:
 	void ExcuteActions(const char _charactere);
 	void Tick();
 };
-

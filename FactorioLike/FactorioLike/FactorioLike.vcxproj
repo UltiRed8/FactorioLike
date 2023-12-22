@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Buildable.h" />
+    <ClInclude Include="Colors.h" />
     <ClInclude Include="Element.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="FileManager.h" />
@@ -151,6 +152,7 @@
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemType.h" />
+    <ClInclude Include="Location.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RessourceNode.h" />

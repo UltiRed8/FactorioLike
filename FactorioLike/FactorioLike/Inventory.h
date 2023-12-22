@@ -1,48 +1,50 @@
 #pragma once
-#include "Item.h"
+
 #include <vector>
+
+#include "Item.h"
+#include "Location.h"
+#include "Colors.h"
 
 using namespace std;
 
-struct Slot
-{
+struct Slot {
 	Item* item = nullptr;
 	int itemAmount = 0;
 
 
 public:
-	string GetDisplayAmount() const
-	{
+	string GetDisplayAmount() const {
 		return itemAmount > 99 ? "+99" : to_string(itemAmount);
 	}
 public:
-	Slot(Item* _item, int _itemAmount)
-	{
+	Slot(Item* _item, int _itemAmount) {
 		item = _item;
 		itemAmount = _itemAmount;
 	}
-public:
-	~Slot()
-	{
+	~Slot() {
 		delete item;
 	}
 };
 
-class Inventory
-{
+class Inventory {
+	int itemsPerLine;
 	int maxItem;
+	int slotsUsed;
 	vector<Slot*> inventory;
+	Location cursorLocation;
 
 public:
 	Inventory();
 	~Inventory();
 
+private:
+	bool ContainItem(Item* _item, const int _amount);
+	int GetLongestName();
+
 public:
 	bool AddItem(Item* _item,const int _amount);
 	bool RemoveItem(Item* _item, const int _amount);
 	void DisplayInventory();
-private:
-	bool ContainItem(Item* _item, const int _amount);
-	int GetLongestName();
+	void MoveCursor(const Location& _deltaLoc);
 };
-

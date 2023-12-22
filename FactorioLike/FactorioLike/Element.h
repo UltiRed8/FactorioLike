@@ -1,25 +1,17 @@
 #pragma once
 
-struct Location
-{
-	int _posX = 0;
-	int _posY = 0;
-};
+#include "Location.h"
 
-Location& operator += (Location& _newLocation, const Location& _currentLocation);
+class Element {
 
-class Element
-{
 protected:
 	Location location;
 
 public:
-	void SetLocation(const Location& _newLocation)
-	{
+	void SetLocation(const Location& _newLocation) {
 		location = _newLocation;
 	}
 
 public:
 	Element();
 };
-
