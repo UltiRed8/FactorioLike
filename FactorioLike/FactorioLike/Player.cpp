@@ -1,7 +1,7 @@
 #include "Player.h"
 
 Player::Player() : Entity() {
-	state = PS_INVENTORY;
+	state = PS_GAME;
 	inventory = Inventory();
 	inventory.AddItem(new Item("epée 1"), 5);
 	inventory.AddItem(new Item("epée 2"), 5);

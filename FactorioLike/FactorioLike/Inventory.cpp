@@ -24,7 +24,6 @@ bool Inventory::AddItem(Item* _item, const int _amount) {
 	inventory.push_back(new Slot(_item, _amount));
 	slotsUsed++;
 	return true;
-	
 }
 
 bool Inventory::ContainItem(Item* _item, const int _amount) {
@@ -81,7 +80,6 @@ void Inventory::MoveCursor(const Location& _deltaLoc) {
 
 void Inventory::DisplayInventory() {
 	system("CLS");
-	cout << GREEN << "======== INVENTAIRE ========" << COLORRESET << endl << endl;
 	vector<vector<string>> _elements;
 	const int _lines = 5;
 	const int _longestName = GetLongestName();
@@ -90,6 +88,12 @@ void Inventory::DisplayInventory() {
 	}
 	const int _size = static_cast<int>(_elements.size());
 	int _offset = 0;
+	cout << GREEN;
+	const int _dividerSize = (((_longestName + 4)+1) * itemsPerLine)-1;
+	for (int _i = 0; _i < _dividerSize / 2 - 6; _i++) cout << "=";
+	cout << " INVENTAIRE ";
+	for (int _i = 0; _i < _dividerSize / 2 - 5; _i++) cout << "=";
+	cout << COLORRESET << endl << endl;
 	do {
 		for (int _index = 0; _index < _lines; _index++) {
 			for (int _index2 = _offset; _index2 < _offset + itemsPerLine; _index2++) {
@@ -102,5 +106,7 @@ void Inventory::DisplayInventory() {
 		}
 		_offset += itemsPerLine;
 	} while (_offset <= _size);
-	cout << GREEN << "============================" << COLORRESET << endl;
+	cout << GREEN;
+	for (int _i = 0; _i < _dividerSize; _i++) cout << "=";
+	cout << COLORRESET << endl << endl;
 }
