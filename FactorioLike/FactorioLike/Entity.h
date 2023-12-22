@@ -2,6 +2,8 @@
 
 #include "Element.h"
 #include "Macros.h"
+#include "GameManager.h"
+#include "Colors.h"
 
 #include <iostream>
 
@@ -18,9 +20,9 @@ struct ProgessBar
 	float currentValue = 50;
 
 public:
-	void Display(const string& _title, const wchar_t& _filledChar, const int _arrowLenght, const int _barLenght) const {
+	void Display(const string& _title, const string& _color, const wchar_t& _filledChar, const int _arrowLenght, const int _barLenght) const {
 		const int _progress = static_cast<const int>(currentValue / maxValue * _barLenght);
-		cout << "#> " << _title;
+		cout << "#> " << _color << _title;
 		for (int _i = 0; _i < _arrowLenght; _i++) cout << "-";
 		cout << "> ";
 		for (int _i = 0; _i < _barLenght; _i++) {
@@ -28,7 +30,7 @@ public:
 				SPECIALCHAR(_filledChar);
 			} else cout << "-";
 		}
-		cout << " #" << endl;
+		cout << COLORRESET << " #" << endl;
 	}
 };
 
@@ -38,8 +40,7 @@ protected:
 	ProgessBar hp;
 
 public:
-	Entity();
-	Entity(const float _maxHp);
+	Entity(const float _maxHp, const char _sign);
 
 public:
 	float GetCurrentHp()

@@ -2,7 +2,7 @@
 
 Map::Map(const int _size) {
 	size = _size;
-	viewDistance = 4;
+	viewDistance = 4; // TODO a changer en version finale
 	Init();
 	Generate();
 }
@@ -57,9 +57,29 @@ bool Map::IsInRange(const Location& _location) const {
 }
 
 void Map::Generate() {
-	for (int _x = 0; _x < size; _x++) {
-		for (int _y = 0; _y < size; _y++) {
-			// TODO
-		}
+	vector<GenerationSetting> _settings;
+	try {
+		_settings = FileManager::GetInstance().ConstructElementsFromConfig<GenerationSetting>("Generation.txt");
+	} catch (const std::exception& _error) {
+		cerr << _error.what();
+	}
+	Location _targetLocation;
+	const int _size = 10;
+	const NodeRarity _rarities[_size] = {
+		NR_COMMUN,
+		NR_COMMUN,
+		NR_COMMUN,
+		NR_COMMUN,
+		NR_RARE,
+		NR_RARE,
+		NR_RARE,
+		NR_EPIC,
+		NR_EPIC,
+		NR_LEGENDARY
+	};
+	_targetLocation.Random(0, size - 1);
+	for (GenerationSetting _setting : _settings) {
+		while (!IsEmptySpace(_targetLocation)) _targetLocation.Random(0, size - 1);
+		grid[_targetLocation.posX][_targetLocation.posY] = new RessourceNode(_rarities[RandomInRange(_size)], _setting.type);
 	}
 }

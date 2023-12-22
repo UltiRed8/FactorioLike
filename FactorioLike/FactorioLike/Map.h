@@ -1,14 +1,27 @@
 #pragma once
 
 #include "Element.h"
+#include "FileManager.h"
+#include "RessourceNode.h"
 
 #include <vector>
 #include <iostream>
 
 using namespace std;
 
-class Map
-{
+struct GenerationSetting {
+	string type;
+	int nodeAmount;
+
+public:
+	GenerationSetting(const string& _line) {
+		int _index = static_cast<int>(_line.find_first_of(":"));
+		type = _line.substr(0, _index);
+		nodeAmount = stoi(_line.substr(_index + 1, static_cast<int>(_line.size())));
+	}
+};
+
+class Map {
 	int viewDistance;
 	int size;
 	vector<vector<Element*>> grid;

@@ -3,8 +3,8 @@
 GameManager::GameManager()
 {
 	lastUpdatedTick = uint64_t();
-	map = new Map(250);
-	ticksAmount = 20;
+	map = new Map(25);
+	ticksAmount = 1; // TODO changer en version finale
 }
 
 GameManager::~GameManager()

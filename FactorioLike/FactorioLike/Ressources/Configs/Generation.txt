@@ -1,0 +1,4 @@
+wood:2
+stone:2
+coal:2
+iron_ore:2

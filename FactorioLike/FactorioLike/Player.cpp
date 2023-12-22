@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player() : Entity() {
+Player::Player() : Entity(hp.maxValue, 'P') {
 	state = PS_GAME;
 	inventory = Inventory();
 	inventory.AddItem(new Item("epée 1"), 5);
@@ -14,7 +14,6 @@ Player::Player() : Entity() {
 	inventory.AddItem(new Item("epée 9"), 5);
 	inventory.AddItem(new Item("epée 10"), 5);
 	inventory.AddItem(new Item("epée 11"), 5);
-	inventory.DisplayInventory();
 	InputManager& _manager = InputManager::GetInstance();
 	_manager.AddKeybind({ 'z', 72 }, [&]() {
 		if (!IsInInventory()) Move({ 0, -1 });
@@ -35,7 +34,7 @@ Player::Player() : Entity() {
 	_manager.AddKeybind({ 'e' }, [&]() { ToggleInventory(); });
 }
 
-Player::Player(const float _maxHunger, const float _maxThirst, const float _maxHp) : Entity(_maxHp) {
+Player::Player(const float _maxHunger, const float _maxThirst, const float _maxHp) : Entity(_maxHp, 'P') {
 	state = PS_GAME;
 	hunger = { _maxHunger,_maxHunger };
 	thirst = { _maxThirst,_maxThirst };
@@ -61,8 +60,8 @@ void Player::UpdateVital(const VitalType& _type, const float _amount) {
 
 void Player::DisplayStatistics(const bool _top, const bool _bottom) const {
 	if (_top) cout << "##################################" << endl;
-	hunger.Display("HUNGER", '@', 1, 20);
-	thirst.Display("THIRST", '@', 1, 20);
+	hunger.Display("HUNGER", GREEN, '@', 1, 20);
+	thirst.Display("THIRST", LIGHT_BLUE, '@', 1, 20);
 	Entity::DisplayStatistics(false, _bottom);
 }
 
