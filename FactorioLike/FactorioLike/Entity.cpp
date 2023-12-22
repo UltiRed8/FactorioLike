@@ -1,8 +1,6 @@
 #include "Entity.h"
 
-Entity::Entity() : Element() {}
-
-Entity::Entity(const float _maxHp) : Element()
+Entity::Entity(const float _maxHp,const char _sign) : Element(_sign)
 {
 	hp.currentValue = _maxHp;
 	hp.maxValue = _maxHp;

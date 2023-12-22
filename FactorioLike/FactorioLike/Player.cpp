@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player() : Entity() 
+Player::Player() : Entity(hp.maxValue,'P')
 {
 	inventory.AddItem(new Item("Heavy"), 1);
 	inventory.AddItem(new Item("epee"), 52);
@@ -17,7 +17,7 @@ Player::Player() : Entity()
 	_manager.AddKeybind({ 'e' }, [&]() { inventory.DisplayInventory(); });
 }
 
-Player::Player(const float _maxHunger, const float _maxThirst, const float _maxHp) : Entity(_maxHp)
+Player::Player(const float _maxHunger, const float _maxThirst, const float _maxHp) : Entity(_maxHp,'P')
 {
 	hunger = { _maxHunger,_maxHunger };
 	thirst = { _maxThirst,_maxThirst };

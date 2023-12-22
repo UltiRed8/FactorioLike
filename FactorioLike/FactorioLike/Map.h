@@ -1,8 +1,12 @@
 #pragma once
 
 #include "Element.h"
+#include "FileManager.h"
+#include "RessourceNode.h"
+#include "Macros.h"
 #include "Item.h"
 #include <vector>
+#include <string>
 #include <iostream>
 
 using namespace std;
@@ -13,10 +17,12 @@ struct GenerationSetting
 	int nodeAmount;
 
 public:
-	GenerationSetting(const string& _type, const string& _name, const int _amount)
+	GenerationSetting(const string& _line)
 	{
-		ressource = Ressource(_type, _name);
-		nodeAmount = _amount;
+		int _index = static_cast<int>(_line.find_first_of(":"));
+		string _type = _line.substr(0, _index);
+		nodeAmount = stoi(_line.substr(_index + 1,static_cast<int>(_line.size())));
+		ressource = { _type , "" };
 	}
 };
 

@@ -1,6 +1,9 @@
 #include "Element.h"
 
-Element::Element() {}
+Element::Element(const char _sign)
+{
+	sign = _sign;
+}
 
 Location& operator+=(Location& _newLocation, const Location& _currentLocation)
 {

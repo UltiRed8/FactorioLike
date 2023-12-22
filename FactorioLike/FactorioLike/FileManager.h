@@ -18,21 +18,33 @@ class FileManager : public Singleton<FileManager>
 	//Save
 public:
 	template<typename Type>
-	vector<Type> LoadConfig(const string& _path)
-	{
-		ifstream _stream = ifstream(CONFIGS + _path);
-		if (!_stream)throw exception(("Le fichier de config " + _path + " n'a pas été trouvé").data());
+	vector<Type> ConstructElementsFromConfig(const string& _path) {
 		vector<Type> _list;
+		ifstream _stream = ifstream(CONFIGS + _path);
+		if (!_stream) throw exception(("Le fichier de config " + _path + " n'a pas été trouvé").data());
 		string _line;
-		vector<string> _values;
-
-		while (getline(_stream,_line,':'))
-		{
-			_values.push_back(_line);
-			//_list.push_back(Type(_type , _name));
+		while (getline(_stream, _line)) {
+			_list.push_back(Type(_line));
 		}
 		return _list;
 	}
+
+	string GetLineStartingWithInConfig(const string& _startWith, const string& _path)
+	{
+		ifstream _stream = ifstream(CONFIGS + _path);
+		if (!_stream) throw exception(("Le fichier de config " + _path + " n'a pas été trouvé").data());
+		string _line;
+		while (getline(_stream,_line))
+		{
+			if (_line.rfind(_startWith,0))
+			{
+				return _line;
+			}
+		}
+		return "";
+	}
+
+	
 
 };
 

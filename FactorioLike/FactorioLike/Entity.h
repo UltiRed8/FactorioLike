@@ -38,8 +38,7 @@ protected:
 	ProgessBar hp;
 
 public:
-	Entity();
-	Entity(const float _maxHp);
+	Entity(const float _maxHp, const char _sign);
 
 public:
 	float GetCurrentHp()
