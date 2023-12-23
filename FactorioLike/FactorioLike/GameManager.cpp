@@ -1,9 +1,11 @@
 #include "GameManager.h"
+#include "Player.h"
 
 GameManager::GameManager()
 {
 	lastUpdatedTick = uint64_t();
-	map = new Map(25);
+	player = new Player();
+	map = new Map(250, player); // TODO changer en version finale
 	ticksAmount = 1; // TODO changer en version finale
 }
 

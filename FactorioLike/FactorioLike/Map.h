@@ -7,6 +7,8 @@
 #include <vector>
 #include <iostream>
 
+class Player;
+
 using namespace std;
 
 struct GenerationSetting {
@@ -25,9 +27,10 @@ class Map {
 	int viewDistance;
 	int size;
 	vector<vector<Element*>> grid;
+	Player* player;
 
 public:
-	Map(const int _size);
+	Map(const int _size, Player* _player);
 
 private:
 	bool IsInRange(const Location& _location) const;

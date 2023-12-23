@@ -14,6 +14,9 @@ public:
 	}
 
 public:
+	Location GetLocation() const {
+		return location;
+	}
 	void SetLocation(const Location& _newLocation) {
 		location = _newLocation;
 	}

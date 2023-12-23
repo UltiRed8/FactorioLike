@@ -1,14 +1,12 @@
 #pragma once
 
-template <class Class>
-class Singleton
-{
+template <typename Class>
+class Singleton {
 protected:
     static Class instance;
 
 public:
-    static Class& GetInstance()
-    {
+    static Class& GetInstance() {
         return instance;
     }
 
@@ -16,4 +14,5 @@ public:
     Singleton() {}
 };
 
-template <class Class> Class Singleton<Class>::instance = Class();
+template <typename Class>
+Class Singleton<Class>::instance = Class();

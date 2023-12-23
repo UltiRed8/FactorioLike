@@ -9,14 +9,17 @@
 
 using namespace std;
 
+class InputManager : public Singleton<InputManager> {
+map<vector<char>,function<void()>> keybinds;
 
-class InputManager : public Singleton<InputManager>
-{
-	map<vector<char>,function<void()>> keybinds;
+public:
+	InputManager();
+
+private:
+	function<void()> FindActions(const char _charactere);
+	void ExcuteActions(const char _charactere);
 
 public:
 	void AddKeybind(const vector<char>& _keys, const function<void()>& _callback);
-	function<void()> FindActions(const char _charactere);
-	void ExcuteActions(const char _charactere);
 	void Tick();
 };

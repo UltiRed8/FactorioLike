@@ -3,34 +3,28 @@
 Player::Player() : Entity(hp.maxValue, 'P') {
 	state = PS_GAME;
 	inventory = Inventory();
-	inventory.AddItem(new Item("epée 1"), 5);
-	inventory.AddItem(new Item("epée 2"), 5);
-	inventory.AddItem(new Item("epée 3"), 5);
-	inventory.AddItem(new Item("epée 4"), 5);
-	inventory.AddItem(new Item("epée 5"), 5);
-	inventory.AddItem(new Item("epée 6"), 5);
-	inventory.AddItem(new Item("epée 7"), 5);
-	inventory.AddItem(new Item("epée 8"), 5);
-	inventory.AddItem(new Item("epée 9"), 5);
-	inventory.AddItem(new Item("epée 10"), 5);
-	inventory.AddItem(new Item("epée 11"), 5);
+	InitKeybinds();
+}
+
+void Player::InitKeybinds() {
+	return; // TODO inputs désactivés temporairement car crash
 	InputManager& _manager = InputManager::GetInstance();
 	_manager.AddKeybind({ 'z', 72 }, [&]() {
 		if (!IsInInventory()) Move({ 0, -1 });
 		else inventory.MoveCursor({ 0, -1 });
-	});
+		});
 	_manager.AddKeybind({ 'q', 75 }, [&]() {
 		if (!IsInInventory()) Move({ -1, 0 });
 		else inventory.MoveCursor({ -1, 0 });
-	});
+		});
 	_manager.AddKeybind({ 's', 80 }, [&]() {
 		if (!IsInInventory()) Move({ 0, 1 });
 		else inventory.MoveCursor({ 0, 1 });
-	});
+		});
 	_manager.AddKeybind({ 'd', 77 }, [&]() {
 		if (!IsInInventory()) Move({ 1, 0 });
 		else inventory.MoveCursor({ 1, 0 });
-	});
+		});
 	_manager.AddKeybind({ 'e' }, [&]() { ToggleInventory(); });
 }
 
