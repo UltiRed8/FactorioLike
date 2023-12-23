@@ -54,6 +54,12 @@
     <ClCompile Include="Macros.h">
       <Filter>Fichiers de ressources</Filter>
     </ClCompile>
+    <ClCompile Include="Machine.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClCompile>
+    <ClCompile Include="Machine.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">

@@ -14,10 +14,13 @@ class GameManager : public Singleton<GameManager>
 {
 	uint64_t lastUpdatedTick;
 	Map* map;
-	float ticksAmount;
+	int ticksAmount;
 	Player* player;
 
 public:
+	int GetTicksPerSeconds() const {
+		return ticksAmount;
+	}
 	Map* GetMap() const
 	{
 		return map;

@@ -21,4 +21,3 @@ public:
 	void ApplyDamages(const float _amount);
 	void Destroy();
 };
-
