@@ -58,6 +58,12 @@ bool Map::MoveElement(const Location& _defaultLocation, const Location& _newLoca
 	return true;
 }
 
+void Map::RemoveElement(const Location& _location) {
+	Element* _element = grid[_location.posX][_location.posY];
+	grid[_location.posX][_location.posY] = nullptr;
+	delete _element;
+}
+
 bool Map::IsInRange(const Location& _location) const {
 	return (_location.posX >= 0 && _location.posY >= 0) && (_location.posX < size && _location.posY < size);
 }
