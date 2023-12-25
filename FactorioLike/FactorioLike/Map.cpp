@@ -24,8 +24,9 @@ bool Map::IsEmptySpace(const Location& _location) const {
 vector<vector<Element*>> Map::GetViewport(const Location& _center) {
 	vector<vector<Element*>> _viewport;
 	vector<Element*> _line;
-	for (int _x = viewDistance*-1; _x <= viewDistance; _x++) {
-		for (int _y = viewDistance*-1; _y <= viewDistance; _y++) { {
+	for (int _x = viewDistance * -1; _x <= viewDistance; _x++) {
+		for (int _y = viewDistance * -1; _y <= viewDistance; _y++) {
+			{
 				if (!IsInRange({ _center.posX + _x, _center.posY + _y })) continue;
 				_line.push_back(grid[_center.posX + _x][_center.posY + _y]);
 			}
@@ -64,6 +65,11 @@ void Map::RemoveElement(const Location& _location) {
 	delete _element;
 }
 
+void Map::SaveMap()
+{
+	FileManager::GetInstance().SaveMap("Map/Map.txt", grid);
+}
+
 bool Map::IsInRange(const Location& _location) const {
 	return (_location.posX >= 0 && _location.posY >= 0) && (_location.posX < size && _location.posY < size);
 }
@@ -74,7 +80,8 @@ void Map::Generate() {
 	vector<GenerationSetting> _settings;
 	try {
 		_settings = FileManager::GetInstance().ConstructElementsFromConfig<GenerationSetting>("Generation.txt");
-	} catch (const std::exception& _error) {
+	}
+	catch (const std::exception& _error) {
 		cerr << _error.what();
 	}
 	Location _targetLocation;

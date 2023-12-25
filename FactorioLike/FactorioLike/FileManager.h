@@ -1,7 +1,9 @@
 #pragma once
 #include "Singleton.h"
+#include "Colors.h"
 #include <cstring>
 #include <iostream>
+#include "Element.h"
 #include <vector>
 #include <string>
 #include <fstream>
@@ -30,4 +32,10 @@ public:
     }
 
     string GetLineStartingWithInConfig(const string& _startWith, const string& _path);
+
+
+    void SaveMap(const string& _path, vector<vector<Element*>> _grid);
+    vector<vector<Element*>> LoadMap(const string& _path);
+
+    Element* CreateElementFromSign(const char _sign);
 };

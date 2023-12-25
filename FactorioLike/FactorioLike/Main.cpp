@@ -50,7 +50,11 @@ int main()
 
 	return 0;*/
 
-	GameManager::GetInstance().Start();
+	//GameManager::GetInstance().Start();
+	Player* _player = new Player(50, 50, 50);
+	Map _map = Map(24, _player);
+	_map.Display();
+	_map.SaveMap();
 
 	return 0;
 }

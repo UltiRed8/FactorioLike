@@ -3,6 +3,7 @@
 #include "Element.h"
 #include "FileManager.h"
 #include "RessourceNode.h"
+#include "Colors.h"
 
 #include <vector>
 #include <iostream>
@@ -46,5 +47,6 @@ public:
 	void Display();
 	bool MoveElement(const Location& _defaultLocation, const Location& _newLocation);
 	void RemoveElement(const Location& _location);
+	void SaveMap();
 };
 
