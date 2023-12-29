@@ -1,7 +1,1 @@
-﻿  FileManager.cpp
-  GameManager.cpp
-  Main.cpp
-  Map.cpp
-  Génération de code en cours...
-x64\Debug\Machine.obj : warning LNK4042: objet spécifié plus d'une fois ; définitions supplémentaires ignorées
-  FactorioLike.vcxproj -> C:\Users\Gregory ZANATTA\OneDrive\Documents\GitHub\FactorioLike\FactorioLike\x64\Debug\FactorioLike.exe
+﻿  FactorioLike.vcxproj -> F:\github\FactorioLike\FactorioLike\x64\Debug\FactorioLike.exe

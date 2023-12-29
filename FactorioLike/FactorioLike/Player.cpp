@@ -7,25 +7,24 @@ Player::Player() : Entity(hp.maxValue, 'P') {
 }
 
 void Player::InitKeybinds() {
-	return; // TODO inputs désactivés temporairement car crash
-	InputManager& _manager = InputManager::GetInstance();
-	_manager.AddKeybind({ 'z', 72 }, [&]() {
+	InputManager* _manager = InputManager::GetInstance();
+	_manager->AddKeybind({ 'z', 72 }, [&]() {
 		if (!IsInInventory()) Move({ 0, -1 });
 		else inventory.MoveCursor({ 0, -1 });
 		});
-	_manager.AddKeybind({ 'q', 75 }, [&]() {
+	_manager->AddKeybind({ 'q', 75 }, [&]() {
 		if (!IsInInventory()) Move({ -1, 0 });
 		else inventory.MoveCursor({ -1, 0 });
 		});
-	_manager.AddKeybind({ 's', 80 }, [&]() {
+	_manager->AddKeybind({ 's', 80 }, [&]() {
 		if (!IsInInventory()) Move({ 0, 1 });
 		else inventory.MoveCursor({ 0, 1 });
 		});
-	_manager.AddKeybind({ 'd', 77 }, [&]() {
+	_manager->AddKeybind({ 'd', 77 }, [&]() {
 		if (!IsInInventory()) Move({ 1, 0 });
 		else inventory.MoveCursor({ 1, 0 });
 		});
-	_manager.AddKeybind({ 'e' }, [&]() { ToggleInventory(); });
+	_manager->AddKeybind({ 'e' }, [&]() { ToggleInventory(); });
 }
 
 Player::Player(const float _maxHunger, const float _maxThirst, const float _maxHp) : Entity(_maxHp, 'P') {
