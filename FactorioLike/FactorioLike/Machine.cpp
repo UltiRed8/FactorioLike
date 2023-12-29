@@ -1,6 +1,6 @@
 #include "Machine.h"
 
-Machine::Machine(const MachineType _type) : Buildable(-1.0f, '?') {
+Machine::Machine(const MachineType _type) : Buildable(-1.0f, "?") {
 	type = _type;
 	if (type == MT_CRAFTER) sign = 'C';
 	else if (type == MT_SMELTER) sign = 'S';

@@ -12,10 +12,10 @@ void RessourceNode::UpdateSign()
 {
 	map<string, string> _signs
 	{
-		make_pair("wood", BROWN "R" WHITE),
-		make_pair("stone", GRAY "R" WHITE),
-		make_pair("coal", DARK_GRAY "R" WHITE),
-		make_pair("iron_ore", YELLOW "R" WHITE),
+		{ "wood", BROWN "R" WHITE },
+		{ "stone", GRAY "R" WHITE },
+		{ "coal", DARK_GRAY "R" WHITE },
+		{ "iron_ore", YELLOW "R" WHITE },
 	};
 	sign = _signs[type];
 }

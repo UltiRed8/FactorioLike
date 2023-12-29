@@ -110,9 +110,12 @@ void Map::Generate()
 	_targetLocation.Random(0, size - 1);
 	for (GenerationSetting _setting : _settings)
 	{
-		while (!IsEmptySpace(_targetLocation)) _targetLocation.Random(0, size - 1);
-		RessourceNode* _node = new RessourceNode(_rarities[RandomInRange(_size)], _setting.type);
-		_node->SetLocation(_targetLocation);
-		grid[_targetLocation.posX][_targetLocation.posY] = _node;
+		for (int _amount = 0; _amount < _setting.nodeAmount; _amount++)
+		{
+			while (!IsEmptySpace(_targetLocation)) _targetLocation.Random(0, size - 1);
+			RessourceNode* _node = new RessourceNode(_rarities[RandomInRange(_size)], _setting.type);
+			_node->SetLocation(_targetLocation);
+			grid[_targetLocation.posX][_targetLocation.posY] = _node;
+		}
 	}
 }
