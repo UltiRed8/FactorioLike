@@ -1,7 +1,9 @@
 #include "Player.h"
 
-Player::Player() : Entity(hp.maxValue, 'P') {
+Player::Player() : Entity(hp.maxValue, GREEN "P" COLORRESET) {
 	state = PS_GAME;
+	hunger = { 100,100 };
+	thirst = { 100,100 };
 	inventory = Inventory();
 	InitKeybinds();
 }
@@ -27,10 +29,12 @@ void Player::InitKeybinds() {
 	_manager->AddKeybind({ 'e' }, [&]() { ToggleInventory(); });
 }
 
-Player::Player(const float _maxHunger, const float _maxThirst, const float _maxHp) : Entity(_maxHp, 'P') {
+Player::Player(const float _maxHunger, const float _maxThirst, const float _maxHp) : Entity(_maxHp, GREEN "P" COLORRESET) {
 	state = PS_GAME;
 	hunger = { _maxHunger,_maxHunger };
 	thirst = { _maxThirst,_maxThirst };
+	inventory = Inventory();
+	InitKeybinds();
 }
 
 void Player::UpdateVital(const VitalType& _type, const float _amount) {

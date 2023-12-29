@@ -1,6 +1,6 @@
 #include "Element.h"
 
-Element::Element(const char _sign) {
+Element::Element(const string _sign) {
 	sign = _sign;
 }
 

@@ -78,7 +78,7 @@ Element* FileManager::CreateElementFromSign(const char _sign)
     //switch (_sign)
     //{
     //case 'P':
-    //    _newElement = new Player();
+    //    _newElement = new Player(); ==========> /!\ Le joueur est créé automatiquement lors de la création de la map, il faut juste charger sa position /!\
     //    break;
     //case 'R':
     //    _newElement = new RessourceNode();

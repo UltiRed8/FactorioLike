@@ -1,7 +1,9 @@
 #pragma once
 #include "ItemType.h"
 #include "Element.h"
+#include "Colors.h"
 #include <string>
+#include <map>
 
 using namespace std;
 
@@ -26,7 +28,9 @@ public:
         return rarity;
     }
 
+private:
+    void UpdateSign();
+
 public:
     RessourceNode(const NodeRarity& _rarity, const string& _type);
-
 };

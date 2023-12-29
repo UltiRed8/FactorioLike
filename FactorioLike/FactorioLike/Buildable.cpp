@@ -1,10 +1,10 @@
 #include "Buildable.h"
 
-Buildable::Buildable(const char _sign) : Element(_sign) {
+Buildable::Buildable(const string _sign) : Element(_sign) {
 	buildableLife = { -1.0f, -1.0f };
 }
 
-Buildable::Buildable(const float _buildableLife, const char _sign) : Element(_sign) {
+Buildable::Buildable(const float _buildableLife, const string _sign) : Element(_sign) {
 	buildableLife = { _buildableLife, _buildableLife };
 }
 
@@ -14,5 +14,5 @@ void Buildable::ApplyDamages(const float _amount) {
 }
 
 void Buildable::Destroy() {
-	GameManager::GetInstance().GetMap()->RemoveElement(location);
+	GameManager::GetInstance()->GetMap()->RemoveElement(location);
 }

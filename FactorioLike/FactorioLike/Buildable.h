@@ -14,8 +14,8 @@ public:
 	}
 
 public:
-	Buildable(const char _sign);
-	Buildable(const float _maxLife, const char _sign);
+	Buildable(const string _sign);
+	Buildable(const float _maxLife, const string _sign);
 
 public:
 	void ApplyDamages(const float _amount);

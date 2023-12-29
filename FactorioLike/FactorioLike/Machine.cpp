@@ -34,7 +34,7 @@ void Machine::SelectRecipe(const Recipe _recipeToSet) {
 }
 
 void Machine::ComputeDelay() {
-	const int _ticksPerSeconds = GameManager::GetInstance().GetTicksPerSeconds();
+	const int _ticksPerSeconds = GameManager::GetInstance()->GetTicksPerSeconds();
 	delay = static_cast<int>(selectedRecipe.processingDelay* _ticksPerSeconds);
 	currentDelay = delay;
 }

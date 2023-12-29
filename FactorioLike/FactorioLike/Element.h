@@ -6,10 +6,10 @@ class Element {
 
 protected:
 	Location location;
-	char sign;
+	string sign;
 
 public:
-	char GetSign() const {
+	string GetSign() const {
 		return sign;
 	}
 
@@ -22,7 +22,7 @@ public:
 	}
 
 public:
-	Element(const char _sign);
+	Element(const string _sign);
 };
 
 ostream& operator << (ostream& _stream, Element* _element);
