@@ -8,7 +8,7 @@ Entity::Entity(const float _maxHp, const char _sign) : Element(_sign) {
 void Entity::Move(const Location& _deltaLoc) {
 	Location _newLocation = location;
 	_newLocation += _deltaLoc;
-	if (GameManager::GetInstance().GetMap()->MoveElement(location, _newLocation)) {
+	if (GameManager::GetInstance()->GetMap()->MoveElement(location, _newLocation)) {
 		location += _deltaLoc;
 	}
 }

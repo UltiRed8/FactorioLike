@@ -5,8 +5,8 @@ GameManager::GameManager()
 {
 	lastUpdatedTick = uint64_t();
 	player = new Player();
-	map = new Map(250, player); // TODO changer en version finale
-	ticksAmount = 1; // TODO changer en version finale
+	map = new Map(24, player); // TODO changer en version finale
+	ticksAmount = 20; // TODO changer en version finale
 }
 
 GameManager::~GameManager()
@@ -16,15 +16,11 @@ GameManager::~GameManager()
 
 void GameManager::Loop()
 {
-	do {
-		if (Interval()) Tick();
+	do
+	{
+		if (Interval() && !player->IsInInventory()) map->Display();
+		InputManager::GetInstance()->Tick();
 	} while (true);
-}
-
-void GameManager::Tick()
-{
-	system("CLS");
-	map->Display();
 }
 
 void GameManager::Start()

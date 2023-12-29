@@ -6,7 +6,6 @@
 
 int main()
 {
-
 	locale::global(locale(""));
 
 	// map 250*250
@@ -40,21 +39,12 @@ int main()
 	//
 	// epée lourde en fer
 
+	GameManager::GetInstance()->Start();
 
-	/*Player* _player = new Player();
-	_player->DisplayStatistics(true);
-	do {
-		InputManager::GetInstance().Tick();
-	} while (true);
-	delete _player;
-
-	return 0;*/
-
-	//GameManager::GetInstance().Start();
-	Player* _player = new Player(50, 50, 50);
+	/*Player* _player = new Player(50, 50, 50);
 	Map _map = Map(24, _player);
 	_map.Display();
-	_map.SaveMap();
+	_map.SaveMap();*/
 
 	return 0;
 }

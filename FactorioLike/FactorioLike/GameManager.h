@@ -32,7 +32,6 @@ public:
 
 private:
 	void Loop();
-	void Tick();
 	bool Interval();
 
 public:
