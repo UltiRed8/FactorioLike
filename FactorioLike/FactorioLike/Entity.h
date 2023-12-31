@@ -33,7 +33,7 @@ public:
 	}
 
 public:
-	void Move(const Location& _deltaLoc);
+	bool Move(const Location& _deltaLoc);
 	virtual void UpdateVital(const VitalType& _type, const float _amount) = 0;
 	virtual void DisplayStatistics(const bool _top = true, const bool _bottom = true) const;
 };

@@ -1,6 +1,7 @@
 #include "Player.h"
 
-Player::Player() : Entity(hp.maxValue, GREEN "P" COLORRESET) {
+Player::Player() : Entity(hp.maxValue, GREEN "P" COLORRESET)
+{
 	state = PS_GAME;
 	hunger = { 100,100 };
 	thirst = { 100,100 };
@@ -8,28 +9,30 @@ Player::Player() : Entity(hp.maxValue, GREEN "P" COLORRESET) {
 	InitKeybinds();
 }
 
-void Player::InitKeybinds() {
+void Player::InitKeybinds()
+{
 	InputManager* _manager = InputManager::GetInstance();
 	_manager->AddKeybind({ 'z', 72 }, [&]() {
-		if (!IsInInventory()) Move({ -1, 0 });
+		if (!IsInInventory()) Direction({ -1, 0 });
 		else inventory.MoveCursor({ 0, -1 });
 		});
 	_manager->AddKeybind({ 'q', 75 }, [&]() {
-		if (!IsInInventory()) Move({ 0, -1 });
+		if (!IsInInventory()) Direction({ 0, -1 });
 		else inventory.MoveCursor({ -1, 0 });
 		});
 	_manager->AddKeybind({ 's', 80 }, [&]() {
-		if (!IsInInventory()) Move({ 1, 0 });
+		if (!IsInInventory()) Direction({ 1, 0 });
 		else inventory.MoveCursor({ 0, 1 });
 		});
 	_manager->AddKeybind({ 'd', 77 }, [&]() {
-		if (!IsInInventory()) Move({ 0, 1 });
+		if (!IsInInventory()) Direction({ 0, 1 });
 		else inventory.MoveCursor({ 1, 0 });
 		});
 	_manager->AddKeybind({ 'e' }, [&]() { ToggleInventory(); });
 }
 
-Player::Player(const float _maxHunger, const float _maxThirst, const float _maxHp) : Entity(_maxHp, GREEN "P" COLORRESET) {
+Player::Player(const float _maxHunger, const float _maxThirst, const float _maxHp) : Entity(_maxHp, GREEN "P" COLORRESET)
+{
 	state = PS_GAME;
 	hunger = { _maxHunger,_maxHunger };
 	thirst = { _maxThirst,_maxThirst };
@@ -37,8 +40,10 @@ Player::Player(const float _maxHunger, const float _maxThirst, const float _maxH
 	InitKeybinds();
 }
 
-void Player::UpdateVital(const VitalType& _type, const float _amount) {
-	switch (_type) {
+void Player::UpdateVital(const VitalType& _type, const float _amount)
+{
+	switch (_type)
+	{
 		case VT_NONE:
 			break;
 		case VT_HP:
@@ -55,14 +60,16 @@ void Player::UpdateVital(const VitalType& _type, const float _amount) {
 	}
 }
 
-void Player::DisplayStatistics(const bool _top, const bool _bottom) const {
+void Player::DisplayStatistics(const bool _top, const bool _bottom) const
+{
 	if (_top) cout << "##################################" << endl;
 	hunger.Display("HUNGER", GREEN, '@', 1, 20);
 	thirst.Display("THIRST", LIGHT_BLUE, '@', 1, 20);
 	Entity::DisplayStatistics(false, _bottom);
 }
 
-void Player::ToggleInventory() {
+void Player::ToggleInventory()
+{
 	if (state == PS_GAME) {
 		state = PS_INVENTORY;
 		inventory.DisplayInventory();
@@ -72,9 +79,25 @@ void Player::ToggleInventory() {
 	}
 }
 
-void Player::UpdateVital(const float _amount,ProgessBar& _value) {
+void Player::UpdateVital(const float _amount,ProgessBar& _value)
+{
 	float currentValue = _value.currentValue;
 	float maxValue = _value.maxValue;
 	currentValue = currentValue + _amount >= maxValue ? maxValue : currentValue + _amount;
 	_value.currentValue = currentValue;
+}
+
+void Player::Direction(const Location& _direction)
+{
+	if (!Move(_direction))
+	{
+		Location _target = location;
+		_target += _direction;
+		Element* _element = GameManager::GetInstance()->GetMap()->GetElementAt(_target);
+		if (dynamic_cast<RessourceNode*>(_element))
+		{
+			cout << "Interacted with " << _element->GetSign() << "!" << endl;
+			system("PAUSE");
+		}
+	}
 }

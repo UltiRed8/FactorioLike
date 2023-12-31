@@ -5,8 +5,8 @@ GameManager::GameManager()
 {
 	lastUpdatedTick = uint64_t();
 	player = new Player();
-	map = new Map(24, player); // TODO changer en version finale
-	ticksAmount = 20; // TODO changer en version finale
+	map = new Map(24, player);
+	ticksAmount = 20;
 	message = new GameMessage("Bienvenue sur le jeu FactorioLike !", ticksAmount, 5);
 }
 

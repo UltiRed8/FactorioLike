@@ -10,8 +10,13 @@ class Item
 {
 protected:
 	string name;
+	string id;
 
 public:
+	string GetID() const
+	{
+		return id;
+	}
 	string GetName() const
 	{
 		return name;
@@ -19,7 +24,7 @@ public:
 
 public:
 	Item();
-	Item(const string& _name);
+	Item(const string& _name, const string& _id);
 
 public:
 	vector<string> GetDisplay(const int _targetLength,const string& _count) const;
@@ -36,7 +41,7 @@ public:
 		type = RT_NONE;
 	}
 
-	Ressource(RessourceType _type,const string& _name) : Item(_name)
+	Ressource(RessourceType _type,const string& _name, const string& _id) : Item(_name, _id)
 	{
 		type = _type;
 	}
@@ -53,7 +58,7 @@ public:
 		type = CT_NONE;
 	}
 
-	Consumable(ConsumableType _type, const string& _name) : Item(_name)
+	Consumable(ConsumableType _type, const string& _name, const string& _id) : Item(_name, _id)
 	{
 		type = _type;
 	}

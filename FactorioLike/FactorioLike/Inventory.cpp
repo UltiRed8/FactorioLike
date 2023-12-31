@@ -26,9 +26,9 @@ bool Inventory::AddItem(Item* _item, const int _amount) {
 	return true;
 }
 
-bool Inventory::ContainItem(Item* _item, const int _amount) {
+bool Inventory::ContainItem(const string& _itemID, const int _amount) {
 	for (Slot* _slot : inventory) {
-		if (_slot->item->GetName() == _item->GetName()) {
+		if (_slot->item->GetID() == _itemID) {
 			if (_slot->itemAmount >= _amount) return true;
 		}
 	}
@@ -45,7 +45,7 @@ int Inventory::GetLongestName() {
 }
 
 bool Inventory::RemoveItem(Item* _item, const int _amount) {
-	if (inventory.empty() || !ContainItem(_item, _amount)) {
+	if (inventory.empty() || !ContainItem(_item->GetID(), _amount)) {
 		delete _item;
 		return false;
 	}

@@ -3,11 +3,13 @@
 Item::Item()
 {
 	name = "Unkown";
+    id = "Unkown";
 }
 
-Item::Item(const string& _name)
+Item::Item(const string& _name, const string& _id)
 {
 	name = _name;
+    id = _id;
 }
 
 vector<string> Item::GetDisplay(const int _targetLength, const string& _count) const

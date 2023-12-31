@@ -34,6 +34,7 @@ public:
 private:
 	void UpdateVital(const float _amount, ProgessBar& _value);
 	void InitKeybinds();
+	void Direction(const Location& _direction);
 
 public:
 	void UpdateVital(const VitalType& _type, const float _amount) override;

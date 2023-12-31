@@ -48,5 +48,6 @@ public:
 	bool MoveElement(const Location& _defaultLocation, const Location& _newLocation);
 	void RemoveElement(const Location& _location);
 	void SaveMap();
+	Element* GetElementAt(const Location& _target);
 };
 

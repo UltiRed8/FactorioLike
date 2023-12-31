@@ -39,10 +39,10 @@ public:
 	~Inventory();
 
 private:
-	bool ContainItem(Item* _item, const int _amount);
 	int GetLongestName();
 
 public:
+	bool ContainItem(const string& _itemID, const int _amount);
 	bool AddItem(Item* _item,const int _amount);
 	bool RemoveItem(Item* _item, const int _amount);
 	void DisplayInventory();

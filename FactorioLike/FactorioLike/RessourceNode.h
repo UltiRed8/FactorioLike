@@ -15,9 +15,14 @@ enum NodeRarity
 class RessourceNode : public Element {
     NodeRarity rarity;
     string type;
+    //string toolIDToCollect; // TODO fonctionne pas et je sais absoluement pas pourquoi
     bool isAvailable;
 
 public:
+    /*string GetToolsIDToCollect() const
+    {
+        return toolIDToCollect;
+    }*/
     bool GetIsAvailable() const
     {
         return isAvailable;

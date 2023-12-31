@@ -23,6 +23,7 @@ public:
 
 public:
 	Element(const string _sign);
+	virtual ~Element() {};
 };
 
 ostream& operator << (ostream& _stream, Element* _element);
