@@ -42,7 +42,6 @@ vector<vector<Element*>> Map::GetViewport(const Location& _center)
 
 void Map::Display()
 {
-	system("CLS");
 	vector<vector<Element*>> _viewport = GetViewport(player->GetLocation());
 	const int _sizeX = static_cast<const int>(_viewport.size());
 	for (int _x = 0; _x < _sizeX; _x++)

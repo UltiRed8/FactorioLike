@@ -3,6 +3,9 @@
 #include "Inventory.h"
 #include "Player.h"
 #include "Colors.h"
+#include <windows.data.json.h>
+
+using namespace std;
 
 int main()
 {

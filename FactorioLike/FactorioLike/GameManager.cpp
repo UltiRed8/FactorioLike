@@ -7,20 +7,38 @@ GameManager::GameManager()
 	player = new Player();
 	map = new Map(24, player); // TODO changer en version finale
 	ticksAmount = 20; // TODO changer en version finale
+	message = new GameMessage("Bienvenue sur le jeu FactorioLike !", ticksAmount, 5);
 }
 
 GameManager::~GameManager()
 {
 	delete map;
+	if (message) delete message;
 }
 
 void GameManager::Loop()
 {
 	do
 	{
-		if (Interval() && !player->IsInInventory()) map->Display();
+		if (Interval()) Draw();
 		InputManager::GetInstance()->Tick();
 	} while (true);
+}
+
+void GameManager::Draw()
+{
+	system("CLS");
+	if (!player->IsInInventory()) map->Display();
+	if (message)
+	{
+		string _messageText = message->GetDisplayMessage();
+		if (_messageText == "")
+		{
+			delete message;
+			message = nullptr;
+		}
+		else cout << endl << _messageText << endl;
+	}
 }
 
 void GameManager::Start()
