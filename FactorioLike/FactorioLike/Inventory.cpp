@@ -84,7 +84,7 @@ void Inventory::DisplayInventory() {
 	const int _lines = 5;
 	const int _longestName = GetLongestName();
 	for (Slot* _slot : inventory) {
-		_elements.push_back(_slot->item->GetDisplay(_longestName,_slot->GetDisplayAmount()));
+		_elements.push_back(_slot->item->GetInventoryDisplay(_longestName,_slot->GetDisplayAmount()));
 	}
 	const int _size = static_cast<int>(_elements.size());
 	int _offset = 0;

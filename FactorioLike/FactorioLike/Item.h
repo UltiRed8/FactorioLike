@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include "FileManager.h"
 
 using namespace std;
 
@@ -24,43 +25,26 @@ public:
 
 public:
 	Item();
-	Item(const string& _name, const string& _id);
+	Item(const string& _id);
+
+private:
+	void GetNameFromConfig();
 
 public:
-	vector<string> GetDisplay(const int _targetLength,const string& _count) const;
-	
+	vector<string> GetInventoryDisplay(const int _targetLength,const string& _count) const;
 };
 
 struct Ressource : public Item
 {
-	RessourceType type;
 
 public:
 	Ressource() : Item()
 	{
-		type = RT_NONE;
+
 	}
 
-	Ressource(RessourceType _type,const string& _name, const string& _id) : Item(_name, _id)
+	Ressource(const string& _id) : Item(_id)
 	{
-		type = _type;
+
 	}
-};
-
-
-struct Consumable : public Item
-{
-	ConsumableType type;
-
-public:
-	Consumable() : Item()
-	{
-		type = CT_NONE;
-	}
-
-	Consumable(ConsumableType _type, const string& _name, const string& _id) : Item(_name, _id)
-	{
-		type = _type;
-	}
-
 };

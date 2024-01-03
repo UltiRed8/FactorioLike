@@ -46,6 +46,11 @@ public:
 	{
 		return map;
 	}
+	void SetGameMessage(const string& _message, const int _seconds)
+	{
+		if (message) delete message;
+		message = new GameMessage(_message, ticksAmount, _seconds);
+	}
 
 public:
 	GameManager();

@@ -7,7 +7,7 @@ string FileManager::GetLineStartingWithInConfig(const string& _startWith, const 
     string _line;
     while (getline(_stream, _line))
     {
-        if (_line.rfind(_startWith, 0))
+        if (!_line.rfind(_startWith, 0))
         {
             return _line;
         }

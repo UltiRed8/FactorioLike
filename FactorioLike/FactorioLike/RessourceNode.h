@@ -4,6 +4,7 @@
 #include "Colors.h"
 #include <string>
 #include <map>
+#include "Item.h"
 
 using namespace std;
 
@@ -14,12 +15,12 @@ enum NodeRarity
 
 class RessourceNode : public Element {
     NodeRarity rarity;
-    string type;
+    Ressource type;
     string toolIDToCollect;
     bool isAvailable;
 
 public:
-    string GetType() const {
+    Ressource GetType() const {
         return type;
     }
     string GetStringNodeRarity() const {

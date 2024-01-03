@@ -97,14 +97,16 @@ void Player::Direction(const Location& _direction)
 		RessourceNode* _ressourceNode;
 		if (_ressourceNode = dynamic_cast<RessourceNode*>(_element))
 		{
-			cout << "Interaction effectuée: Ressource Node " << _ressourceNode->GetStringNodeRarity() << " (" << _ressourceNode->GetType() << ")" << endl;
-			int _miningByHandsQuantity = 1;
-			if (_ressourceNode->GetToolsIDToCollect() == "" || inventory.ContainItem(_ressourceNode->GetToolsIDToCollect(), _miningByHandsQuantity)) {
-				inventory.AddItem(new Item("NAME", _ressourceNode->GetType()), _miningByHandsQuantity);
-				cout << "+ " << _miningByHandsQuantity << " " << _ressourceNode->GetType() << endl;
-			} else cout << "Vous n'avez pas l'outil nécessaire pour récupérer la ressource !" << endl;
-
-			system("PAUSE");
+			const int _miningByHandsQuantity = 1;
+			const string _ressourceName = _ressourceNode->GetType().GetName();
+			string _message = "Interaction effectuée: Ressource Node " + _ressourceNode->GetStringNodeRarity() + " (" + _ressourceName + ")";
+			if (_ressourceNode->GetToolsIDToCollect() == "" || inventory.ContainItem(_ressourceNode->GetToolsIDToCollect(), _miningByHandsQuantity))
+			{
+				inventory.AddItem(new Item(_ressourceNode->GetType()), _miningByHandsQuantity);
+				_message += "\n+ " + to_string(_miningByHandsQuantity) + " " + _ressourceName + "\n";
+			}
+			else _message += "\nVous n'avez pas l'outil nécessaire pour récupérer la ressource !\n";
+			GameManager::GetInstance()->SetGameMessage(_message, 1);
 		}
 	}
 }
