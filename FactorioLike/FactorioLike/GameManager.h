@@ -37,6 +37,7 @@ class GameManager : public Singleton<GameManager>
 	int ticksAmount;
 	Player* player;
 	GameMessage* message;
+	string saveName;
 
 public:
 	int GetTicksPerSeconds() const {
@@ -50,6 +51,9 @@ public:
 	{
 		if (message) delete message;
 		message = new GameMessage(_message, ticksAmount, _seconds);
+	}
+	void SetSaveName(const string& _name) {
+		saveName = _name;
 	}
 
 public:

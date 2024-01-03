@@ -8,7 +8,24 @@ Machine::Machine(const MachineType _type) : Buildable(-1.0f, "?") {
 }
 
 void Machine::InitRecipes() {
-	// TODO a mettre dans des configs ? surement
+	// TODO a mettre dans des configs (format ligne en dessou)
+	// 
+	// auto_crafter
+	// wood:2
+	// TIME:1.0
+	// stick:1
+	// 
+	// auto_smelter
+	// iron_ore:1
+	// TIME:3.5
+	// iron_ingot:1
+	// 
+	// =>
+	// id machine
+	// input(s)
+	// delay
+	// output(s)
+	// 
 	// TODO a completer (rajouter les crafts possibles par machines)
 	if (type == MT_CRAFTER) {
 		availableRecipes.push_back(Recipe(MT_CRAFTER, { make_pair("wood", 2) }, 1.0f, { make_pair("stick", 1) }));

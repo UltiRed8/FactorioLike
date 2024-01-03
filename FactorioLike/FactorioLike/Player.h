@@ -7,7 +7,7 @@
 using namespace std;
 
 enum PlayerState {
-	PS_GAME, PS_INVENTORY
+	PS_GAME, PS_INVENTORY, PS_BUILDING, PS_ESCAPE
 };
 
 class Player : public Entity {
@@ -30,14 +30,19 @@ public:
 	bool IsInInventory() const {
 		return state == PS_INVENTORY;
 	}
+	bool IsInGame() const {
+		return state == PS_GAME;
+	}
 
 private:
 	void UpdateVital(const float _amount, ProgessBar& _value);
 	void InitKeybinds();
 	void Direction(const Location& _direction);
+	void ToggleInventory();
+	void BuildMenu();
+	void EscapeMenu();
 
 public:
 	void UpdateVital(const VitalType& _type, const float _amount) override;
 	virtual void DisplayStatistics(const bool _top = true, const bool _bottom = true) const override;
-	void ToggleInventory();
 };

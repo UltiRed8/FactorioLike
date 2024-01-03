@@ -7,43 +7,28 @@
 
 using namespace std;
 
+template<typename Type>
+Type GetInput(const string& _question)
+{
+	cout << _question;
+	Type _result;
+	cin >> _result;
+	return _result;
+}
+
 int main()
 {
 	locale::global(locale(""));
-
-	// map 250*250
-	// viewport 26*26
-	// player ZQSD | arrows
-	// inventory E TAB I (25 => stacks illimités)
-	// sauvegarde
-	// chargement
-	// 3 slots de save
-	// ressources
-	// machines (miner, smelter, foundry, constructor)
-
-	// bois
-	// établi
-	// batons
-	// pioche bois
-	// epée bois
-	// 
-	// pierre
-	// charbon
-	// pioche pierre
-	// epée pierre
-	// 
-	// four
-	// fer
-	// batons de fer
-	// pioche fer
-	// mineur automatique
-	// smelteur automatique
-	// crafteur automatique
-	//
-	// epée lourde en fer
-
-	GameManager::GetInstance()->Start();
-
+	
+	const string _save = GetInput<string>("Entrez le nom de la sauvegarde sur laquelle jouer :\n> ");
+	if (!_save.empty())
+	{
+		GameManager::GetInstance()->SetSaveName(_save);
+		GameManager::GetInstance()->Start();
+	}
+	system("CLS");
+	cout << "Goodbye!" << endl;
+	
 	/*Player* _player = new Player(50, 50, 50);
 	Map _map = Map(24, _player);
 	_map.Display();

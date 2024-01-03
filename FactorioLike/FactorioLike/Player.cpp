@@ -29,6 +29,11 @@ void Player::InitKeybinds()
 		else inventory.MoveCursor({ 1, 0 });
 		});
 	_manager->AddKeybind({ 'e' }, [&]() { ToggleInventory(); });
+	_manager->AddKeybind({ 'b' }, [&]() { BuildMenu(); });
+	_manager->AddKeybind({ 27 }, [&]() {
+		if (IsInInventory()) ToggleInventory();
+		else EscapeMenu();
+		});
 }
 
 Player::Player(const float _maxHunger, const float _maxThirst, const float _maxHp) : Entity(_maxHp, GREEN "P" COLORRESET)
@@ -66,6 +71,24 @@ void Player::DisplayStatistics(const bool _top, const bool _bottom) const
 	hunger.Display("HUNGER", GREEN, '@', 1, 20);
 	thirst.Display("THIRST", LIGHT_BLUE, '@', 1, 20);
 	Entity::DisplayStatistics(false, _bottom);
+}
+
+void Player::BuildMenu() {
+	if (state != PS_GAME) return;
+	state = PS_BUILDING;
+	system("CLS");
+	// TODO a coder
+}
+
+void Player::EscapeMenu() {
+	if (state != PS_GAME) return;
+	state = PS_ESCAPE;
+	system("CLS");
+	// TODO a coder
+	// bouton revenir en jeu (+ réappuyer sur echap ==> passer la méthode en toggle comme le toggleinventory)
+	// bouton sauvegarder (pas de sauvegarde automatique)
+	// bouton charger (charge la même save file)
+	// bouton quitter
 }
 
 void Player::ToggleInventory()

@@ -8,6 +8,7 @@ GameManager::GameManager()
 	map = new Map(24, player);
 	ticksAmount = 20;
 	message = new GameMessage("Bienvenue sur le jeu FactorioLike !", ticksAmount, 5);
+	saveName = "";
 }
 
 GameManager::~GameManager()
@@ -27,7 +28,7 @@ void GameManager::Loop()
 
 void GameManager::Draw()
 {
-	if (!player->IsInInventory())
+	if (player->IsInGame())
 	{
 		system("CLS");
 		map->Display();
