@@ -15,14 +15,25 @@ enum NodeRarity
 class RessourceNode : public Element {
     NodeRarity rarity;
     string type;
-    //string toolIDToCollect; // TODO fonctionne pas et je sais absoluement pas pourquoi
+    string toolIDToCollect;
     bool isAvailable;
 
 public:
-    /*string GetToolsIDToCollect() const
+    string GetType() const {
+        return type;
+    }
+    string GetStringNodeRarity() const {
+        if (rarity == NR_NONE) return "Aucune";
+        else if (rarity == NR_COMMUN) return "Commun";
+        else if (rarity == NR_RARE) return "Rare";
+        else if (rarity == NR_EPIC) return "Epic";
+        else if (rarity == NR_LEGENDARY) return "Légendaire";
+        else return "";
+    }
+    string GetToolsIDToCollect() const
     {
         return toolIDToCollect;
-    }*/
+    }
     bool GetIsAvailable() const
     {
         return isAvailable;

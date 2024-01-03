@@ -94,9 +94,16 @@ void Player::Direction(const Location& _direction)
 		Location _target = location;
 		_target += _direction;
 		Element* _element = GameManager::GetInstance()->GetMap()->GetElementAt(_target);
-		if (dynamic_cast<RessourceNode*>(_element))
+		RessourceNode* _ressourceNode;
+		if (_ressourceNode = dynamic_cast<RessourceNode*>(_element))
 		{
-			cout << "Interacted with " << _element->GetSign() << "!" << endl;
+			cout << "Interaction effectuée: Ressource Node " << _ressourceNode->GetStringNodeRarity() << " (" << _ressourceNode->GetType() << ")" << endl;
+			int _miningByHandsQuantity = 1;
+			if (_ressourceNode->GetToolsIDToCollect() == "" || inventory.ContainItem(_ressourceNode->GetToolsIDToCollect(), _miningByHandsQuantity)) {
+				inventory.AddItem(new Item("NAME", _ressourceNode->GetType()), _miningByHandsQuantity);
+				cout << "+ " << _miningByHandsQuantity << " " << _ressourceNode->GetType() << endl;
+			} else cout << "Vous n'avez pas l'outil nécessaire pour récupérer la ressource !" << endl;
+
 			system("PAUSE");
 		}
 	}

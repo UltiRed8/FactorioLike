@@ -4,7 +4,7 @@
 Map::Map(const int _size, Player* _player) {
 	player = _player;
 	size = _size;
-	viewDistance = 8; // TODO a changer en version finale
+	viewDistance = 8;
 	Init();
 	Generate();
 }

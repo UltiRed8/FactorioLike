@@ -5,7 +5,7 @@ RessourceNode::RessourceNode(const NodeRarity& _rarity, const string& _type) : E
 	rarity = _rarity;
 	type = _type;
 	isAvailable = true;
-	//toolIDToCollect = "";
+	toolIDToCollect = "";
 	UpdateSign();
 }
 
@@ -19,12 +19,12 @@ void RessourceNode::UpdateSign()
 		{ "iron_ore", YELLOW "R" WHITE },
 	};
 	sign = _signs[type];
-	/*map<string, string> _toolsToCollect
+	map<string, string> _toolsToCollect
 	{
 		{ "wood", "" },
 		{ "stone", "wooden_pickaxe stone_pickaxe" },
 		{ "coal", "stone_pickaxe" },
 		{ "iron_ore", "stone_pickaxe" },
 	};
-	toolIDToCollect = _toolsToCollect[type];*/
+	toolIDToCollect = _toolsToCollect[type];
 }
