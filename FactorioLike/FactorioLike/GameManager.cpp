@@ -27,17 +27,20 @@ void GameManager::Loop()
 
 void GameManager::Draw()
 {
-	system("CLS");
-	if (!player->IsInInventory()) map->Display();
-	if (message)
+	if (!player->IsInInventory())
 	{
-		string _messageText = message->GetDisplayMessage();
-		if (_messageText == "")
+		system("CLS");
+		map->Display();
+		if (message)
 		{
-			delete message;
-			message = nullptr;
+			string _messageText = message->GetDisplayMessage();
+			if (_messageText == "")
+			{
+				delete message;
+				message = nullptr;
+			}
+			else cout << endl << _messageText << endl;
 		}
-		else cout << endl << _messageText << endl;
 	}
 }
 
