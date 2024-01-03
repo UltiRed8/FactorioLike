@@ -91,12 +91,14 @@ bool Map::IsInRange(const Location& _location) const
 void Map::Generate()
 {
 	vector<GenerationSetting> _settings;
-	try {
+	try
+	{
 		_settings = FileManager::GetInstance()->ConstructElementsFromConfig<GenerationSetting>("Generation.txt");
 	}
 	catch (const std::exception& _error)
 	{
-		cerr << _error.what();
+		cerr << _error.what() << endl;
+		system("PAUSE");
 	}
 	Location _targetLocation;
 	const int _size = 10;

@@ -1,4 +1,0 @@
-wood:Bois
-strone:pierre
-coal:Charbon
-iron_ore:Minerais de fer

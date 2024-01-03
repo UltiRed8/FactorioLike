@@ -22,7 +22,7 @@ void Item::GetNameFromConfig()
     catch (const exception _e)
     {
         name = "Unkown";
-        cout << _e.what() << endl;
+        cerr << _e.what() << endl;
         system("PAUSE");
     }
 }
