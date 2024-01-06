@@ -1,7 +1,8 @@
 #include "FileManager.h"
+#include "Player.h"
 
-
-string FileManager::GetLineStartingWithInConfig(const string& _startWith, const string& _path) {
+string FileManager::GetLineStartingWithInConfig(const string& _startWith, const string& _path)
+{
     ifstream _stream = ifstream(CONFIGS + _path);
     if (!_stream) throw exception(("Le fichier de config " + _path + " n'a pas été trouvé").data());
     string _line;
@@ -15,37 +16,51 @@ string FileManager::GetLineStartingWithInConfig(const string& _startWith, const 
     return "";
 }
 
-void FileManager::SaveMap(const string& _path,vector<vector<Element*>> _grid)
+FileManager::FileManager()
 {
-    ofstream _stream(_path);
+    saveName = "Unknown";
+}
 
-    if (!_stream) {
-        throw exception("Erreur lors de l'ouverture du fichier ");
-        return;
-    }
-
-    for (int _x = 0; _x < _grid.size(); _x++)
+void FileManager::SaveMap(const vector<vector<Element*>>& _map)
+{
+    ofstream _stream(SAVESLOT + saveName + ".map");
+    if (!_stream)
     {
-        for (int _y = 0; _y < _grid.size(); _y++)
+        string _error = "Erreur lors de la création de la sauvegarde MAP " + saveName + " !";
+        throw exception(_error.c_str());
+    }
+    for (const vector<Element*> _line : _map)
+    {
+        for (Element* _element : _line)
         {
-            Element* _element = _grid[_x][_y];
-            if (_element)
-            {
-                _stream << _element->GetSign();
-                _stream << " ";
-            } 
-            else
-            {
-                _stream << ". ";
-            }
+            if (!_element) continue;
+            if (dynamic_cast<Entity*>(_element)) continue;
+            _stream << _element->GetSaveableLine() << endl;
         }
-        _stream << endl;
     }
 }
 
-vector<vector<Element*>> FileManager::LoadMap(const string& _path)
+void FileManager::SavePlayer(Player* _player)
 {
-    vector<vector<Element*>> _grid;
+    ofstream _stream(SAVESLOT + saveName + ".player");
+    if (!_stream)
+    {
+        string _error = "Erreur lors de la création de la sauvegarde PLAYER " + saveName + " !";
+        throw exception(_error.c_str());
+    }
+    _stream << _player->GetSaveableLine() << endl;
+}
+
+void FileManager::SaveGame(const string& _saveName, Map* _map)
+{
+    saveName = _saveName;
+    SaveMap(_map->GetGrid());
+    SavePlayer(_map->GetPlayer());
+}
+
+vector<vector<Element*>> FileManager::LoadGame(const string& _path)
+{
+    /*vector<vector<Element*>> _grid;
 
     ifstream _stream(_path);
 
@@ -67,7 +82,9 @@ vector<vector<Element*>> FileManager::LoadMap(const string& _path)
         }
         _grid.push_back(_store);
     }
-    return _grid;
+    return _grid;*/
+    throw exception("rip");
+    return vector<vector<Element*>>();
 }
 
 

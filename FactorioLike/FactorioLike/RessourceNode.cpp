@@ -4,9 +4,14 @@ RessourceNode::RessourceNode(const NodeRarity& _rarity, const string& _type) : E
 {
 	rarity = _rarity;
 	type = Ressource(_type);
-	isAvailable = true;
+	collectorPlaced = false;
 	toolIDToCollect = "";
 	UpdateSign();
+}
+
+string RessourceNode::GetSaveableLine() const
+{
+	return "RessourceNode:" + to_string(location.posX) + ":" + to_string(location.posY) + ":" + to_string(rarity) + ":" + type.GetID();
 }
 
 void RessourceNode::UpdateSign()

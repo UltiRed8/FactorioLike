@@ -1,9 +1,8 @@
 #pragma once
 
 #include "Element.h"
-#include "GameManager.h"
 #include "ProgressBar.h"
-
+#include "GameManager.h"
 #include <iostream>
 
 using namespace std;

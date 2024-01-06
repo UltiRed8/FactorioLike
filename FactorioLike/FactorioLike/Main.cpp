@@ -28,11 +28,6 @@ int main()
 	}
 	system("CLS");
 	cout << "Goodbye!" << endl;
-	
-	/*Player* _player = new Player(50, 50, 50);
-	Map _map = Map(24, _player);
-	_map.Display();
-	_map.SaveMap();*/
 
 	return 0;
 }

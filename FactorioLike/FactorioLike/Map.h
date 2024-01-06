@@ -31,7 +31,12 @@ class Map {
 	Player* player;
 
 public:
-
+	vector<vector<Element*>> GetGrid() const {
+		return grid;
+	}
+	Player* GetPlayer() const {
+		return player;
+	}
 
 public:
 	Map(const int _size, Player* _player);
@@ -47,7 +52,6 @@ public:
 	void Display();
 	bool MoveElement(const Location& _defaultLocation, const Location& _newLocation);
 	void RemoveElement(const Location& _location);
-	void SaveMap();
 	Element* GetElementAt(const Location& _target);
 };
 

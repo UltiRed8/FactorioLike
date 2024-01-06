@@ -45,6 +45,7 @@ void Player::InitKeybinds()
 		if (IsInInventory()) ToggleInventory();
 		else EscapeMenu();
 	});
+	_manager->AddKeybind({ 32, '\n' }, [&]() { if (currentMenu) currentMenu->ExecuteSelected(); });
 }
 
 Player::Player(const float _maxHunger, const float _maxThirst, const float _maxHp) : Entity(_maxHp, GREEN "P" COLORRESET)
@@ -112,6 +113,11 @@ void Player::CloseMenu()
 	state = PS_GAME;
 }
 
+string Player::GetSaveableLine() const
+{
+	return "Player:" + to_string(location.posX) + ":" + to_string(location.posY) + ":" + to_string(hp.currentValue) + ":" + to_string(thirst.currentValue) + ":" + to_string(hunger.currentValue);
+}
+
 void Player::EscapeMenu()
 {
 	if (state == PS_GAME)
@@ -121,7 +127,7 @@ void Player::EscapeMenu()
 		vector<Button> _buttons =
 		{
 			Button("Reprendre", [&]() { CloseMenu(); }),
-			Button("Sauvegarder", [&]() { }), // TODO
+			Button("Sauvegarder", [&]() { GameManager::GetInstance()->SaveGame(); }),
 			Button("Charger", [&]() { }), // TODO
 			Button("Quitter", [&]() { }), // TODO
 		};

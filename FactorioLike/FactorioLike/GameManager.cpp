@@ -4,11 +4,15 @@
 GameManager::GameManager()
 {
 	lastUpdatedTick = uint64_t();
-	player = new Player();
-	map = new Map(24, player);
-	ticksAmount = 20;
 	message = new GameMessage("Bienvenue sur le jeu FactorioLike !", ticksAmount, 5);
 	saveName = "";
+	ticksAmount = 20;
+	player = nullptr;
+	map = nullptr;
+
+	/*return;
+	player = new Player();
+	map = new Map(24, player);*/
 }
 
 GameManager::~GameManager()
@@ -47,7 +51,28 @@ void GameManager::Draw()
 
 void GameManager::Start()
 {
+	LoadGame();
 	Loop();
+}
+
+void GameManager::LoadGame()
+{
+	try
+	{
+		FileManager::GetInstance()->LoadGame(saveName);
+	}
+	catch (const exception _error)
+	{
+		cerr << _error.what() << endl;
+		//system("PAUSE") On ne veux pas mettre pause, si il y as une erreur => nouvelle partie
+		player = new Player();
+		map = new Map(24, player);
+	}
+}
+
+void GameManager::SaveGame()
+{
+	FileManager::GetInstance()->SaveGame(saveName, map);
 }
 
 bool GameManager::Interval()

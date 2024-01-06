@@ -72,11 +72,6 @@ void Map::RemoveElement(const Location& _location)
 	delete _element;
 }
 
-void Map::SaveMap()
-{
-	FileManager::GetInstance()->SaveMap("Map/Map.txt", grid);
-}
-
 Element* Map::GetElementAt(const Location& _target)
 {
 	if (!IsInRange(_target)) return nullptr;

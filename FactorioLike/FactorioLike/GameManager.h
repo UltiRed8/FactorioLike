@@ -10,7 +10,8 @@ class Player;
 
 using namespace std::chrono;
 
-struct GameMessage {
+struct GameMessage
+{
 	string message = "";
 	int displayTicks = 0;
 
@@ -40,7 +41,8 @@ class GameManager : public Singleton<GameManager>
 	string saveName;
 
 public:
-	int GetTicksPerSeconds() const {
+	int GetTicksPerSeconds() const
+	{
 		return ticksAmount;
 	}
 	Map* GetMap() const
@@ -52,7 +54,8 @@ public:
 		if (message) delete message;
 		message = new GameMessage(_message, ticksAmount, _seconds);
 	}
-	void SetSaveName(const string& _name) {
+	void SetSaveName(const string& _name)
+	{
 		saveName = _name;
 	}
 
@@ -67,4 +70,6 @@ private:
 
 public:
 	void Start();
+	void LoadGame();
+	void SaveGame();
 };

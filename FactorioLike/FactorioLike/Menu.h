@@ -38,5 +38,6 @@ private:
 
 public:
 	void ChangeSelected(const int _direction);
+	void ExecuteSelected();
 };
 

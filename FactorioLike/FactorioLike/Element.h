@@ -24,6 +24,9 @@ public:
 public:
 	Element(const string _sign);
 	virtual ~Element() {};
+
+public:
+	virtual string GetSaveableLine() const = 0;
 };
 
 ostream& operator << (ostream& _stream, Element* _element);

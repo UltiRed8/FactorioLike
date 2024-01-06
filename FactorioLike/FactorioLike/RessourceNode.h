@@ -16,7 +16,7 @@ class RessourceNode : public Element {
     NodeRarity rarity;
     Ressource type;
     string toolIDToCollect;
-    bool isAvailable;
+    bool collectorPlaced;
 
 public:
     Ressource GetType() const {
@@ -34,9 +34,9 @@ public:
     {
         return toolIDToCollect;
     }
-    bool GetIsAvailable() const
+    bool GetHasCollector() const
     {
-        return isAvailable;
+        return collectorPlaced;
     }
 
     NodeRarity GetRarity() const
@@ -49,4 +49,5 @@ private:
 
 public:
     RessourceNode(const NodeRarity& _rarity, const string& _type);
+    virtual string GetSaveableLine() const override;
 };

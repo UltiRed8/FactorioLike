@@ -34,3 +34,8 @@ void Menu::ChangeSelected(const int _direction)
 	else if (selectedIndex >= _amountOfButtons) selectedIndex = 0;
 	Display();
 }
+
+void Menu::ExecuteSelected()
+{
+	buttons[selectedIndex].Execute();
+}

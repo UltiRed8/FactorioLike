@@ -56,4 +56,5 @@ private:
 public:
 	void UpdateVital(const VitalType& _type, const float _amount) override;
 	virtual void DisplayStatistics(const bool _top = true, const bool _bottom = true) const override;
+	virtual string GetSaveableLine() const override;
 };

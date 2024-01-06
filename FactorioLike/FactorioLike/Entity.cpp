@@ -24,3 +24,4 @@ void Entity::DisplayStatistics(const bool _top, const bool _bottom) const
 	hp.Display("HP", RED, L'\u2665', 5, 20);
 	if (_bottom) cout << "##################################" << endl;
 }
+
