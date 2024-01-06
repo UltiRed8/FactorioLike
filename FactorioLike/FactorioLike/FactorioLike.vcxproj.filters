@@ -95,9 +95,6 @@
     <ClInclude Include="Item.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="ItemType.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Location.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>

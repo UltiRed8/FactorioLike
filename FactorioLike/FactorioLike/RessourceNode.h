@@ -1,5 +1,4 @@
 #pragma once
-#include "ItemType.h"
 #include "Element.h"
 #include "Colors.h"
 #include <string>
