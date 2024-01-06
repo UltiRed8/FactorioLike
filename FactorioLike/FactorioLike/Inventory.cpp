@@ -1,4 +1,6 @@
 #include "Inventory.h"
+#include "GameManager.h"
+#include "Player.h"
 
 Inventory::Inventory()
 {
@@ -21,6 +23,7 @@ bool Inventory::AddItem(Item* _item, const int _amount)
 		{
 			_slot->itemAmount += _amount;
 			delete _item;
+			Update();
 			return true;
 		}
 	}
@@ -28,7 +31,16 @@ bool Inventory::AddItem(Item* _item, const int _amount)
 	if (_size >= maxItem) return false;
 	inventory.push_back(new Slot(_item, _amount));
 	slotsUsed++;
+	Update();
 	return true;
+}
+
+void Inventory::Update()
+{
+	if (GameManager::GetInstance()->GetPlayer()->IsInInventory())
+	{
+		DisplayInventory();
+	}
 }
 
 bool Inventory::ContainItem(const string& _itemID, const int _amount)
@@ -74,6 +86,7 @@ bool Inventory::RemoveItem(Item* _item, const int _amount)
 				slotsUsed--;
 			}
 			delete _item;
+			Update();
 			return true;
 		}
 		_index++;
@@ -107,7 +120,7 @@ string Inventory::GetSaveLine() const
 
 void Inventory::Load(const vector<string>& _list)
 {
-	// TODO
+
 }
 
 void Inventory::DisplayInventory()

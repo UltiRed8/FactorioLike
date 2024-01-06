@@ -45,6 +45,7 @@ public:
 
 private:
 	int GetLongestName();
+	void Update();
 
 public:
 	bool ContainItem(const string& _itemID, const int _amount);

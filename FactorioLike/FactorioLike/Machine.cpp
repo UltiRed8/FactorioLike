@@ -1,4 +1,5 @@
 #include "Machine.h"
+#include "Player.h"
 
 Machine::Machine() : Buildable(-1.0f, "?")
 {
@@ -66,11 +67,17 @@ void Machine::InitRecipes() {
 
 void Machine::Execute()
 {
-	// TODO si c'est un collecteur, alors donner la ressource du node au joueur (*1)
-	// TODO sinon
-	// TODO verifier si le joueur as ce qu'il faut
-	// TODO enlever l'input de l'inventaire du joueur
-	// TODO donner l'output à l'inventaire du joueur
+	if (type == MT_COLLECTOR)
+	{
+		GameManager::GetInstance()->GetPlayer()->GetInventory().AddItem(new Item(node->GetType()), 1);
+	}
+	else
+	{
+		// TODO faire avec selectedRecipe
+		// TODO verifier si le joueur as ce qu'il faut
+		// TODO enlever l'input de l'inventaire du joueur
+		// TODO donner l'output à l'inventaire du joueur
+	}
 }
 
 void Machine::SelectRecipe(const Recipe _recipeToSet)
@@ -95,7 +102,7 @@ void Machine::ComputeDelay()
 	{
 		if (node)
 		{
-			delay = static_cast<int>(static_cast<int>(node->GetRarity()) / _ticksPerSeconds);
+			delay = static_cast<int>(static_cast<int>((_ticksPerSeconds * 60) / node->GetRarity()));
 			currentDelay = delay;
 		}
 	}
@@ -107,14 +114,14 @@ void Machine::ComputeDelay()
 }
 
 void Machine::Tick()
-{ // TODO ne pas oublier d'appeler les méthodes tick des machines dans le tick du game manager (dynamic cast des elements pour check if machine ?)
+{
 	if (type == MT_NONE) return;
 	if (delay < 0) return;
 	currentDelay--;
 	if (currentDelay == 0)
 	{
-		currentDelay = delay;
 		Execute();
+		currentDelay = delay;
 	}
 }
 
@@ -128,6 +135,7 @@ void Machine::Load(const vector<string>& _list)
 	if (_selectedRecipe != -1) selectedRecipe = availableRecipes[_selectedRecipe];
 	const vector<string> _nodeList = { _list.begin() + 5, _list.end() };
 	node = new RessourceNode(_nodeList);
+	ComputeDelay();
 }
 
 string Machine::GetSaveLine() const

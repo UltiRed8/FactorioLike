@@ -23,7 +23,10 @@ void GameManager::Loop()
 {
 	do
 	{
-		if (Interval()) Draw();
+		if (Interval()) {
+			Draw();
+			map->TickElements();
+		}
 		InputManager::GetInstance()->Tick();
 	} while (!wantsToQuit);
 }
@@ -64,7 +67,6 @@ void GameManager::LoadGame()
 	catch (const exception _error)
 	{
 		cerr << _error.what() << endl;
-		//system("PAUSE") On ne veux pas mettre pause, si il y as une erreur => nouvelle partie
 		map->Generate();
 	}
 }

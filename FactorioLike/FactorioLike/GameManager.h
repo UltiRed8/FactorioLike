@@ -43,6 +43,9 @@ class GameManager : public Singleton<GameManager>
 	bool wantsToQuit;
 
 public:
+	Player* GetPlayer() const {
+		return player;
+	}
 	int GetTicksPerSeconds() const
 	{
 		return ticksAmount;

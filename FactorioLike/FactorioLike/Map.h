@@ -59,4 +59,5 @@ public:
 	Element* GetElementAt(const Location& _target);
 	void Generate();
 	void TeleportPlayer(const Location& _newLocation);
+	void TickElements();
 };

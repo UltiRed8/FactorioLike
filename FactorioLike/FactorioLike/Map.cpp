@@ -1,5 +1,6 @@
 #include "Map.h"
 #include "Player.h"
+#include "Machine.h"
 
 Map::Map(const int _size, Player* _player) {
 	player = _player;
@@ -127,4 +128,18 @@ void Map::TeleportPlayer(const Location& _newLocation)
 	grid[_oldLocation.posX][_oldLocation.posY] = nullptr;
 	grid[_newLocation.posX][_newLocation.posY] = player;
 	player->SetLocation(_newLocation);
+}
+
+void Map::TickElements()
+{
+	for (const vector<Element*>& _line : grid)
+	{
+		for (Element* _element : _line)
+		{
+			if (!_element) continue;
+			Machine* _machine = dynamic_cast<Machine*>(_element);
+			if (!_machine) continue;
+			_machine->Tick();
+		}
+	}
 }
