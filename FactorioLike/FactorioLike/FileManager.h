@@ -27,6 +27,9 @@ public:
 private:
     void SaveMap(const vector<vector<Element*>>& _map);
     void SaveInventory(const Inventory& _inventory);
+    void LoadMap(Map* _map);
+    void LoadInventory(Inventory& _inventory);
+    vector<string> LineToParts(string _line);
 
 public:
     template<typename Type>
@@ -42,10 +45,7 @@ public:
         }
         return _list;
     }
-
     string GetLineStartingWithInConfig(const string& _startWith, const string& _path);
-    Element* CreateElementFromSign(const char _sign);
-
     void SaveGame(const string& _saveName, Map* _map);
-    vector<vector<Element*>> LoadGame(const string& _path);
+    void LoadGame(const string& _saveName, Map* _map);
 };

@@ -4,7 +4,6 @@
 #include "Entity.h"
 #include "Inventory.h"
 #include "Menu.h"
-#include "Saveable.h"
 
 using namespace std;
 
@@ -27,7 +26,7 @@ public:
 	~Player();
 
 public:
-	Inventory GetInventory() const {
+	Inventory& GetInventory() {
 		return inventory;
 	}
 	float GetHunger() const
@@ -61,5 +60,5 @@ public:
 	void UpdateVital(const VitalType& _type, const float _amount) override;
 	virtual void DisplayStatistics(const bool _top = true, const bool _bottom = true) const override;
 	virtual string GetSaveLine() const override;
-	virtual void Load(const string& _loadLine) override;
+	virtual void Load(const vector<string>& _list) override;
 };

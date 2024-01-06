@@ -118,9 +118,11 @@ string Player::GetSaveLine() const
 	return "Player:" + to_string(location.posX) + ":" + to_string(location.posY) + ":" + to_string(hp.currentValue) + ":" + to_string(thirst.currentValue) + ":" + to_string(hunger.currentValue);
 }
 
-void Player::Load(const string& _loadLine)
+void Player::Load(const vector<string>& _list)
 {
-	// TODO
+	hp.currentValue = stof(_list[3]);
+	thirst.currentValue = stof(_list[4]);
+	hunger.currentValue = stof(_list[5]);
 }
 
 void Player::EscapeMenu()

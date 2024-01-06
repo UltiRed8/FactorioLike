@@ -39,6 +39,7 @@ class GameManager : public Singleton<GameManager>
 	Player* player;
 	GameMessage* message;
 	string saveName;
+	int mapSize;
 
 public:
 	int GetTicksPerSeconds() const

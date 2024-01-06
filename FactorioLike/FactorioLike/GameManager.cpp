@@ -9,6 +9,7 @@ GameManager::GameManager()
 	ticksAmount = 20;
 	player = nullptr;
 	map = nullptr;
+	mapSize = 24;
 
 	/*return;
 	player = new Player();
@@ -57,16 +58,17 @@ void GameManager::Start()
 
 void GameManager::LoadGame()
 {
+	player = new Player();
+	map = new Map(mapSize, player);
 	try
 	{
-		FileManager::GetInstance()->LoadGame(saveName);
+		FileManager::GetInstance()->LoadGame(saveName, map);
 	}
 	catch (const exception _error)
 	{
 		cerr << _error.what() << endl;
 		//system("PAUSE") On ne veux pas mettre pause, si il y as une erreur => nouvelle partie
-		player = new Player();
-		map = new Map(24, player);
+		map->Generate();
 	}
 }
 

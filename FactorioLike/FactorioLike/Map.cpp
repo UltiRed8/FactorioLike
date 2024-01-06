@@ -6,7 +6,6 @@ Map::Map(const int _size, Player* _player) {
 	size = _size;
 	viewDistance = 8;
 	Init();
-	Generate();
 }
 
 void Map::Init()
@@ -120,4 +119,12 @@ void Map::Generate()
 			grid[_targetLocation.posX][_targetLocation.posY] = _node;
 		}
 	}
+}
+
+void Map::TeleportPlayer(const Location& _newLocation)
+{
+	Location _oldLocation = player->GetLocation();
+	grid[_oldLocation.posX][_oldLocation.posY] = nullptr;
+	grid[_newLocation.posX][_newLocation.posY] = player;
+	player->SetLocation(_newLocation);
 }

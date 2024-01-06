@@ -143,7 +143,6 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Machine.h" />
     <ClCompile Include="RessourceNode.cpp" />
-    <ClCompile Include="Saveable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Buildable.h" />

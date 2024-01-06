@@ -8,9 +8,19 @@ RessourceNode::RessourceNode(const NodeRarity& _rarity, const string& _type) : E
 	UpdateSign();
 }
 
-void RessourceNode::Load(const string& _loadLine)
+RessourceNode::RessourceNode(const vector<string>& _list) : Element("R")
 {
-	// TODO
+	Load(_list);
+	toolIDToCollect = "";
+	UpdateSign();
+}
+
+void RessourceNode::Load(const vector<string>& _list)
+{
+	location.posX = stoi(_list[1]);
+	location.posY = stoi(_list[2]);
+	rarity = static_cast<NodeRarity>(stoi(_list[3]));
+	type = Ressource(_list[4]);
 }
 
 string RessourceNode::GetSaveLine() const

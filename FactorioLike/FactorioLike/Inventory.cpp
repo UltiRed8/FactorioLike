@@ -105,7 +105,7 @@ string Inventory::GetSaveLine() const
 	return _line;
 }
 
-void Inventory::Load(const string& _loadLine)
+void Inventory::Load(const vector<string>& _list)
 {
 	// TODO
 }

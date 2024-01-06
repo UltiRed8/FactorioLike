@@ -53,5 +53,5 @@ public:
 	void DisplayInventory();
 	void MoveCursor(const Location& _deltaLoc);
 	virtual string GetSaveLine() const override;
-	virtual void Load(const string& _loadLine) override;
+	virtual void Load(const vector<string>& _list) override;
 };

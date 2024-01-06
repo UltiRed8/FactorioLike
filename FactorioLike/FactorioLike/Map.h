@@ -34,7 +34,7 @@ class Map
 	Player* player;
 
 public:
-	vector<vector<Element*>> GetGrid() const
+	vector<vector<Element*>>& GetGrid()
 	{
 		return grid;
 	}
@@ -48,7 +48,6 @@ public:
 
 private:
 	bool IsInRange(const Location& _location) const;
-	void Generate();
 	void Init();
 	bool IsEmptySpace(const Location& _location) const;
 	vector<vector<Element*>> GetViewport(const Location& _center);
@@ -58,4 +57,6 @@ public:
 	bool MoveElement(const Location& _defaultLocation, const Location& _newLocation);
 	void RemoveElement(const Location& _location);
 	Element* GetElementAt(const Location& _target);
+	void Generate();
+	void TeleportPlayer(const Location& _newLocation);
 };

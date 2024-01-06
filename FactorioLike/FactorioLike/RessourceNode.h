@@ -46,6 +46,9 @@ private:
 
 public:
     RessourceNode(const NodeRarity& _rarity, const string& _type);
+    RessourceNode(const vector<string>& _list);
+
+public:
     virtual string GetSaveLine() const override;
-    virtual void Load(const string& _loadLine) override;
+    virtual void Load(const vector<string>& _list) override;
 };
