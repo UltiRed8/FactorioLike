@@ -3,34 +3,43 @@
 #include "InputManager.h"
 #include "Entity.h"
 #include "Inventory.h"
+#include "Menu.h"
 
 using namespace std;
 
-enum PlayerState {
+enum PlayerState
+{
 	PS_GAME, PS_INVENTORY, PS_BUILDING, PS_ESCAPE
 };
 
-class Player : public Entity {
+class Player : public Entity
+{
 	Inventory inventory;
 	PlayerState state;
 	ProgessBar hunger;
 	ProgessBar thirst;
+	Menu* currentMenu;
 
 public:
 	Player();
 	Player(const float _maxHunger, const float _maxThirst,const float _maxHp);
+	~Player();
 
 public:
-	float GetHunger() const	{
+	float GetHunger() const
+	{
 		return hunger.currentValue;
 	}
-	float GetThirst() const  {
+	float GetThirst() const
+	{
 		return thirst.currentValue;
 	}
-	bool IsInInventory() const {
+	bool IsInInventory() const
+	{
 		return state == PS_INVENTORY;
 	}
-	bool IsInGame() const {
+	bool IsInGame() const
+	{
 		return state == PS_GAME;
 	}
 
@@ -41,6 +50,8 @@ private:
 	void ToggleInventory();
 	void BuildMenu();
 	void EscapeMenu();
+	void DeleteMenu();
+	void CloseMenu();
 
 public:
 	void UpdateVital(const VitalType& _type, const float _amount) override;

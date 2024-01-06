@@ -15,4 +15,4 @@ iron_pickaxe:Pioche en fer
 collector:Récupérateur de ressources
 auto_smelter:Four automatique
 auto_crafter:Constructeur automatique
-heavy_iron_sword:Epée en fer lourde
+heavy_iron_sword:Epée en fer lourde (ENDGAME)

@@ -8,29 +8,18 @@ Machine::Machine(const MachineType _type) : Buildable(-1.0f, "?") {
 }
 
 void Machine::InitRecipes() {
-	// TODO a mettre dans des configs (format ligne en dessou)
-	// 
-	// auto_crafter
-	// wood:2
-	// TIME:1.0
-	// stick:1
-	// 
-	// auto_smelter
-	// iron_ore:1
-	// TIME:3.5
-	// iron_ingot:1
-	// 
-	// =>
-	// id machine
-	// input(s)
-	// delay
-	// output(s)
-	// 
-	// TODO a completer (rajouter les crafts possibles par machines)
 	if (type == MT_CRAFTER) {
 		availableRecipes.push_back(Recipe(MT_CRAFTER, { make_pair("wood", 2) }, 1.0f, { make_pair("stick", 1) }));
+		availableRecipes.push_back(Recipe(MT_CRAFTER, { make_pair("wood", 3), make_pair("stick", 2) }, 1.0f, { make_pair("wooden_pickaxe", 1) }));
+		availableRecipes.push_back(Recipe(MT_CRAFTER, { make_pair("wood", 2), make_pair("stick", 1) }, 1.0f, { make_pair("wooden_sword", 1) }));
+		availableRecipes.push_back(Recipe(MT_CRAFTER, { make_pair("stone", 3), make_pair("stick", 2) }, 1.0f, { make_pair("stone_pickaxe", 1) }));
+		availableRecipes.push_back(Recipe(MT_CRAFTER, { make_pair("stone", 2), make_pair("stick", 1) }, 1.0f, { make_pair("stone_sword", 1) }));
+		availableRecipes.push_back(Recipe(MT_CRAFTER, { make_pair("iron_ingot", 2) }, 1.0f, { make_pair("iron_rod", 1) }));
+		availableRecipes.push_back(Recipe(MT_CRAFTER, { make_pair("iron_ingot", 3), make_pair("iron_rod", 2)}, 1.0f, {make_pair("iron_pickaxe", 1)}));
+		availableRecipes.push_back(Recipe(MT_CRAFTER, { make_pair("iron_ingot", 100), make_pair("iron_rod", 20)}, 1.0f, {make_pair("heavy_iron_sword", 1)}));
 	} else if (type == MT_SMELTER) {
-		availableRecipes.push_back(Recipe(MT_SMELTER, { make_pair("iron_ore", 1) }, 3.5f, { make_pair("iron_ingot", 1) }));
+		availableRecipes.push_back(Recipe(MT_SMELTER, { make_pair("iron_ore", 4), make_pair("coal", 1)}, 3.5f, {make_pair("iron_ingot", 2)}));
+		availableRecipes.push_back(Recipe(MT_SMELTER, { make_pair("wood", 6), make_pair("coal", 1)}, 3.5f, {make_pair("coal", 4)}));
 	}
 }
 

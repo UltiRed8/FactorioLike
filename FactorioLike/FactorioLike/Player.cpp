@@ -2,6 +2,7 @@
 
 Player::Player() : Entity(hp.maxValue, GREEN "P" COLORRESET)
 {
+	currentMenu = nullptr;
 	state = PS_GAME;
 	hunger = { 100,100 };
 	thirst = { 100,100 };
@@ -13,36 +14,52 @@ void Player::InitKeybinds()
 {
 	InputManager* _manager = InputManager::GetInstance();
 	_manager->AddKeybind({ 'z', 72 }, [&]() {
+		if (currentMenu)
+		{
+			currentMenu->ChangeSelected(-1);
+			return;
+		}
 		if (!IsInInventory()) Direction({ -1, 0 });
 		else inventory.MoveCursor({ 0, -1 });
-		});
+	});
 	_manager->AddKeybind({ 'q', 75 }, [&]() {
 		if (!IsInInventory()) Direction({ 0, -1 });
 		else inventory.MoveCursor({ -1, 0 });
-		});
+	});
 	_manager->AddKeybind({ 's', 80 }, [&]() {
+		if (currentMenu)
+		{
+			currentMenu->ChangeSelected(1);
+			return;
+		}
 		if (!IsInInventory()) Direction({ 1, 0 });
 		else inventory.MoveCursor({ 0, 1 });
-		});
+	});
 	_manager->AddKeybind({ 'd', 77 }, [&]() {
 		if (!IsInInventory()) Direction({ 0, 1 });
 		else inventory.MoveCursor({ 1, 0 });
-		});
+	});
 	_manager->AddKeybind({ 'e' }, [&]() { ToggleInventory(); });
 	_manager->AddKeybind({ 'b' }, [&]() { BuildMenu(); });
 	_manager->AddKeybind({ 27 }, [&]() {
 		if (IsInInventory()) ToggleInventory();
 		else EscapeMenu();
-		});
+	});
 }
 
 Player::Player(const float _maxHunger, const float _maxThirst, const float _maxHp) : Entity(_maxHp, GREEN "P" COLORRESET)
 {
+	currentMenu = nullptr;
 	state = PS_GAME;
 	hunger = { _maxHunger,_maxHunger };
 	thirst = { _maxThirst,_maxThirst };
 	inventory = Inventory();
 	InitKeybinds();
+}
+
+Player::~Player()
+{
+	DeleteMenu();
 }
 
 void Player::UpdateVital(const VitalType& _type, const float _amount)
@@ -73,32 +90,59 @@ void Player::DisplayStatistics(const bool _top, const bool _bottom) const
 	Entity::DisplayStatistics(false, _bottom);
 }
 
-void Player::BuildMenu() {
+void Player::BuildMenu()
+{
 	if (state != PS_GAME) return;
 	state = PS_BUILDING;
 	system("CLS");
 	// TODO a coder
 }
 
-void Player::EscapeMenu() {
-	if (state != PS_GAME) return;
-	state = PS_ESCAPE;
-	system("CLS");
-	// TODO a coder
-	// bouton revenir en jeu (+ réappuyer sur echap ==> passer la méthode en toggle comme le toggleinventory)
-	// bouton sauvegarder (pas de sauvegarde automatique)
-	// bouton charger (charge la même save file)
-	// bouton quitter
+void Player::DeleteMenu()
+{
+	if (currentMenu) {
+		delete currentMenu;
+		currentMenu = nullptr;
+	}
+}
+
+void Player::CloseMenu()
+{
+	DeleteMenu();
+	state = PS_GAME;
+}
+
+void Player::EscapeMenu()
+{
+	if (state == PS_GAME)
+	{
+		state = PS_ESCAPE;
+		DeleteMenu();
+		vector<Button> _buttons =
+		{
+			Button("Reprendre", [&]() { CloseMenu(); }),
+			Button("Sauvegarder", [&]() { }), // TODO
+			Button("Charger", [&]() { }), // TODO
+			Button("Quitter", [&]() { }), // TODO
+		};
+		currentMenu = new Menu("PAUSE", _buttons);
+	}
+	else if (state == PS_ESCAPE)
+	{
+		CloseMenu();
+	}
 }
 
 void Player::ToggleInventory()
 {
-	if (state == PS_GAME) {
+	if (state == PS_GAME)
+	{
 		state = PS_INVENTORY;
 		inventory.DisplayInventory();
-	} else if (state == PS_INVENTORY) {
-		system("CLS");
-		state = PS_GAME;
+	}
+	else if (state == PS_INVENTORY)
+	{
+		CloseMenu();
 	}
 }
 
