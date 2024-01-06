@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player() : Entity(hp.maxValue, GREEN "P" COLORRESET)
+Player::Player() : Entity(100, GREEN "P" COLORRESET)
 {
 	currentMenu = nullptr;
 	state = PS_GAME;
@@ -135,8 +135,8 @@ void Player::EscapeMenu()
 		{
 			Button("Reprendre", [&]() { CloseMenu(); }),
 			Button("Sauvegarder", [&]() { GameManager::GetInstance()->SaveGame(); }),
-			Button("Charger", [&]() { }), // TODO
-			Button("Quitter", [&]() { }), // TODO
+			Button("Charger", [&]() { GameManager::GetInstance()->LoadGame(); }),
+			Button("Quitter", [&]() { GameManager::GetInstance()->SetWantsToQuit(true); }),
 		};
 		currentMenu = new Menu("PAUSE", _buttons);
 	}

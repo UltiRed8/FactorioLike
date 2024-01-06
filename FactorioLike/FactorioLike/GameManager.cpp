@@ -10,10 +10,7 @@ GameManager::GameManager()
 	player = nullptr;
 	map = nullptr;
 	mapSize = 24;
-
-	/*return;
-	player = new Player();
-	map = new Map(24, player);*/
+	wantsToQuit = false;
 }
 
 GameManager::~GameManager()
@@ -28,7 +25,7 @@ void GameManager::Loop()
 	{
 		if (Interval()) Draw();
 		InputManager::GetInstance()->Tick();
-	} while (true);
+	} while (!wantsToQuit);
 }
 
 void GameManager::Draw()

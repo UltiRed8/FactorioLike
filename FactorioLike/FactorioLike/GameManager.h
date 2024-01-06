@@ -40,6 +40,7 @@ class GameManager : public Singleton<GameManager>
 	GameMessage* message;
 	string saveName;
 	int mapSize;
+	bool wantsToQuit;
 
 public:
 	int GetTicksPerSeconds() const
@@ -58,6 +59,10 @@ public:
 	void SetSaveName(const string& _name)
 	{
 		saveName = _name;
+	}
+	void SetWantsToQuit(const bool _value)
+	{
+		wantsToQuit = _value;
 	}
 
 public:
