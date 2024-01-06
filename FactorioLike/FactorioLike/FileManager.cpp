@@ -1,5 +1,6 @@
 #include "FileManager.h"
 #include "Player.h"
+#include "Machine.h"
 
 string FileManager::GetLineStartingWithInConfig(const string& _startWith, const string& _path)
 {
@@ -81,6 +82,7 @@ void FileManager::LoadMap(Map* _map)
     {
         vector<string> _currentList = LineToParts(_line);
         if (_currentList[0] == "RessourceNode") _grid[stoi(_currentList[1])][stoi(_currentList[2])] = new RessourceNode(_currentList);
+        else if (_currentList[0] == "Machine") _grid[stoi(_currentList[1])][stoi(_currentList[2])] = new Machine(_currentList);
         else if (_currentList[0] == "Player")
         {
             Player* _player = _map->GetPlayer();

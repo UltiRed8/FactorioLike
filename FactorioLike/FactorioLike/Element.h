@@ -3,22 +3,26 @@
 #include "Location.h"
 #include "Saveable.h"
 
-class Element : public Saveable {
+class Element : public Saveable
+{
 
 protected:
 	Location location;
 	string sign;
 
 public:
-	string GetSign() const {
+	string GetSign() const
+	{
 		return sign;
 	}
 
 public:
-	Location GetLocation() const {
+	Location GetLocation() const
+	{
 		return location;
 	}
-	void SetLocation(const Location& _newLocation) {
+	void SetLocation(const Location& _newLocation)
+	{
 		location = _newLocation;
 	}
 

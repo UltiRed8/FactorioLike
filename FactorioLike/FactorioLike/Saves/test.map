@@ -1,7 +1,7 @@
 RessourceNode:1:5:45:coal
 RessourceNode:5:5:30:coal
-Player:6:18:0,000000:100,000000:100,000000
-RessourceNode:7:21:30:wood
+Player:6:21:0,000000:100,000000:100,000000
+Machine:7:21:4:-1:RessourceNode:7:21:30:wood
 RessourceNode:11:5:30:stone
 RessourceNode:12:8:30:wood
 RessourceNode:17:2:45:iron_ore
