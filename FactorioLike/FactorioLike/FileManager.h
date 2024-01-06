@@ -26,7 +26,6 @@ public:
 
 private:
     void SaveMap(const vector<vector<Element*>>& _map);
-    void SavePlayer(Player* _player);
     void SaveInventory(const Inventory& _inventory);
 
 public:

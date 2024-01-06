@@ -95,7 +95,7 @@ void Inventory::MoveCursor(const Location& _deltaLoc)
 	DisplayInventory();
 }
 
-string Inventory::GetSaveableLine() const
+string Inventory::GetSaveLine() const
 {
 	string _line = "";
 	for (Slot* _slot : inventory)
@@ -103,6 +103,11 @@ string Inventory::GetSaveableLine() const
 		_line += _slot->item->GetID() + ":" + to_string(_slot->itemAmount);
 	}
 	return _line;
+}
+
+void Inventory::Load(const string& _loadLine)
+{
+	// TODO
 }
 
 void Inventory::DisplayInventory()

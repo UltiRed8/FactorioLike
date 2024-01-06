@@ -5,6 +5,7 @@
 #include "Item.h"
 #include "Location.h"
 #include "Colors.h"
+#include "Saveable.h"
 
 using namespace std;
 
@@ -30,7 +31,7 @@ public:
 	}
 };
 
-class Inventory
+class Inventory : public Saveable
 {
 	int itemsPerLine;
 	int maxItem;
@@ -51,5 +52,6 @@ public:
 	bool RemoveItem(Item* _item, const int _amount);
 	void DisplayInventory();
 	void MoveCursor(const Location& _deltaLoc);
-	string GetSaveableLine() const;
+	virtual string GetSaveLine() const override;
+	virtual void Load(const string& _loadLine) override;
 };

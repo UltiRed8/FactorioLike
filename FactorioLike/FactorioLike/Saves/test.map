@@ -1,8 +1,9 @@
-RessourceNode:0:10:45:wood
-RessourceNode:1:16:70:stone
-RessourceNode:8:4:70:iron_ore
-RessourceNode:12:10:70:coal
-RessourceNode:13:6:100:iron_ore
-RessourceNode:17:21:30:wood
-RessourceNode:19:4:30:stone
-RessourceNode:23:23:45:coal
+RessourceNode:0:15:45:wood
+RessourceNode:1:12:100:coal
+RessourceNode:10:7:30:stone
+Player:12:15:0,000000:100,000000:100,000000
+RessourceNode:14:19:45:wood
+RessourceNode:15:15:70:iron_ore
+RessourceNode:16:0:45:stone
+RessourceNode:17:1:45:coal
+RessourceNode:19:11:45:iron_ore

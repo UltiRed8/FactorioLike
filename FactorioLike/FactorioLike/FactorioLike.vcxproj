@@ -143,6 +143,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Machine.h" />
     <ClCompile Include="RessourceNode.cpp" />
+    <ClCompile Include="Saveable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Buildable.h" />
@@ -160,6 +161,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="RessourceNode.h" />
+    <ClInclude Include="Saveable.h" />
     <ClInclude Include="Singleton.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

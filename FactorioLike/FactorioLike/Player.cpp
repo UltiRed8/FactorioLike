@@ -113,9 +113,14 @@ void Player::CloseMenu()
 	state = PS_GAME;
 }
 
-string Player::GetSaveableLine() const
+string Player::GetSaveLine() const
 {
 	return "Player:" + to_string(location.posX) + ":" + to_string(location.posY) + ":" + to_string(hp.currentValue) + ":" + to_string(thirst.currentValue) + ":" + to_string(hunger.currentValue);
+}
+
+void Player::Load(const string& _loadLine)
+{
+	// TODO
 }
 
 void Player::EscapeMenu()

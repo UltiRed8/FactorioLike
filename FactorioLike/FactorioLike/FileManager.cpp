@@ -34,21 +34,11 @@ void FileManager::SaveMap(const vector<vector<Element*>>& _map)
         for (Element* _element : _line)
         {
             if (!_element) continue;
-            if (dynamic_cast<Entity*>(_element)) continue;
-            _stream << _element->GetSaveableLine() << endl;
+            Saveable* _saveable = dynamic_cast<Saveable*>(_element);
+            if (!_saveable) continue;
+            _stream << _saveable->GetSaveLine() << endl;
         }
     }
-}
-
-void FileManager::SavePlayer(Player* _player)
-{
-    ofstream _stream(SAVESLOT + saveName + ".player");
-    if (!_stream)
-    {
-        string _error = "Erreur lors de la création de la sauvegarde PLAYER " + saveName + " !";
-        throw exception(_error.c_str());
-    }
-    _stream << _player->GetSaveableLine() << endl;
 }
 
 void FileManager::SaveInventory(const Inventory& _inventory)
@@ -59,7 +49,7 @@ void FileManager::SaveInventory(const Inventory& _inventory)
         string _error = "Erreur lors de la création de la sauvegarde INVENTORY " + saveName + " !";
         throw exception(_error.c_str());
     }
-    _stream << _inventory.GetSaveableLine() << endl;
+    _stream << _inventory.GetSaveLine() << endl;
 }
 
 
@@ -67,9 +57,7 @@ void FileManager::SaveGame(const string& _saveName, Map* _map)
 {
     saveName = _saveName;
     SaveMap(_map->GetGrid());
-    Player* _player = _map->GetPlayer();
-    SavePlayer(_player);
-    SaveInventory(_player->GetInventory());
+    SaveInventory(_map->GetPlayer()->GetInventory());
 }
 
 vector<vector<Element*>> FileManager::LoadGame(const string& _path)
