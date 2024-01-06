@@ -51,11 +51,25 @@ void FileManager::SavePlayer(Player* _player)
     _stream << _player->GetSaveableLine() << endl;
 }
 
+void FileManager::SaveInventory(const Inventory& _inventory)
+{
+    ofstream _stream(SAVESLOT + saveName + ".inventory");
+    if (!_stream)
+    {
+        string _error = "Erreur lors de la création de la sauvegarde INVENTORY " + saveName + " !";
+        throw exception(_error.c_str());
+    }
+    _stream << _inventory.GetSaveableLine() << endl;
+}
+
+
 void FileManager::SaveGame(const string& _saveName, Map* _map)
 {
     saveName = _saveName;
     SaveMap(_map->GetGrid());
-    SavePlayer(_map->GetPlayer());
+    Player* _player = _map->GetPlayer();
+    SavePlayer(_player);
+    SaveInventory(_player->GetInventory());
 }
 
 vector<vector<Element*>> FileManager::LoadGame(const string& _path)

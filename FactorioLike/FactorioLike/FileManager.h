@@ -10,6 +10,7 @@
 
 class Map;
 class Player;
+class Inventory;
 
 using namespace std;
 
@@ -26,6 +27,7 @@ public:
 private:
     void SaveMap(const vector<vector<Element*>>& _map);
     void SavePlayer(Player* _player);
+    void SaveInventory(const Inventory& _inventory);
 
 public:
     template<typename Type>

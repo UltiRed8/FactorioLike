@@ -26,6 +26,9 @@ public:
 	~Player();
 
 public:
+	Inventory GetInventory() const {
+		return inventory;
+	}
 	float GetHunger() const
 	{
 		return hunger.currentValue;

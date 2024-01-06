@@ -12,29 +12,34 @@ class Player;
 
 using namespace std;
 
-struct GenerationSetting {
+struct GenerationSetting
+{
 	string type;
 	int nodeAmount;
 
 public:
-	GenerationSetting(const string& _line) {
+	GenerationSetting(const string& _line)
+	{
 		int _index = static_cast<int>(_line.find_first_of(":"));
 		type = _line.substr(0, _index);
 		nodeAmount = stoi(_line.substr(_index + 1, static_cast<int>(_line.size())));
 	}
 };
 
-class Map {
+class Map
+{
 	int viewDistance;
 	int size;
 	vector<vector<Element*>> grid;
 	Player* player;
 
 public:
-	vector<vector<Element*>> GetGrid() const {
+	vector<vector<Element*>> GetGrid() const
+	{
 		return grid;
 	}
-	Player* GetPlayer() const {
+	Player* GetPlayer() const
+	{
 		return player;
 	}
 
@@ -54,4 +59,3 @@ public:
 	void RemoveElement(const Location& _location);
 	Element* GetElementAt(const Location& _target);
 };
-

@@ -8,26 +8,30 @@
 
 using namespace std;
 
-struct Slot {
+struct Slot
+{
 	Item* item = nullptr;
 	int itemAmount = 0;
 
-
 public:
-	string GetDisplayAmount() const {
+	string GetDisplayAmount() const
+	{
 		return itemAmount > 99 ? "+99" : to_string(itemAmount);
 	}
 public:
-	Slot(Item* _item, int _itemAmount) {
+	Slot(Item* _item, int _itemAmount)
+	{
 		item = _item;
 		itemAmount = _itemAmount;
 	}
-	~Slot() {
+	~Slot()
+	{
 		delete item;
 	}
 };
 
-class Inventory {
+class Inventory
+{
 	int itemsPerLine;
 	int maxItem;
 	int slotsUsed;
@@ -47,4 +51,5 @@ public:
 	bool RemoveItem(Item* _item, const int _amount);
 	void DisplayInventory();
 	void MoveCursor(const Location& _deltaLoc);
+	string GetSaveableLine() const;
 };

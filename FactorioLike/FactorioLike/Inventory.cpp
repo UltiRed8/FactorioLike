@@ -95,6 +95,16 @@ void Inventory::MoveCursor(const Location& _deltaLoc)
 	DisplayInventory();
 }
 
+string Inventory::GetSaveableLine() const
+{
+	string _line = "";
+	for (Slot* _slot : inventory)
+	{
+		_line += _slot->item->GetID() + ":" + to_string(_slot->itemAmount);
+	}
+	return _line;
+}
+
 void Inventory::DisplayInventory()
 {
 	system("CLS");
