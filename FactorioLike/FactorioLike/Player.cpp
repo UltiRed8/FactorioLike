@@ -99,10 +99,23 @@ void Player::DisplayStatistics(const bool _top, const bool _bottom) const
 
 void Player::BuildMenu()
 {
-	if (state != PS_GAME) return;
-	state = PS_BUILDING;
-	system("CLS");
-	// TODO a coder
+	if (state == PS_GAME)
+	{
+		state = PS_BUILDING;
+		DeleteMenu();
+		vector<Button> _buttons =
+		{
+			Button("Etabli", [&]() {  }), // TODO
+			Button("Constructeur", [&]() {  }), // TODO
+			Button("Fondrie", [&]() {  }), // TODO
+			Button("Collecteur de ressources", [&]() {  }), // TODO
+		};
+		currentMenu = new Menu("BUILD MENU", _buttons);
+	}
+	else if (state == PS_BUILDING)
+	{
+		CloseMenu();
+	}
 }
 
 void Player::DeleteMenu()
