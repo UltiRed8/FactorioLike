@@ -97,6 +97,7 @@ bool Inventory::RemoveItem(Item* _item, const int _amount)
 
 void Inventory::MoveCursor(const Location& _deltaLoc)
 {
+	// TODO a fix
 	if (slotsUsed <= 1) return;
 	cursorLocation += _deltaLoc;
 	const int _minimalAmountInColumn = static_cast<int>(floor(slotsUsed / itemsPerLine - 1));
@@ -113,7 +114,7 @@ string Inventory::GetSaveLine() const
 	string _line = "";
 	for (Slot* _slot : inventory)
 	{
-		_line += _slot->item->GetID() + ":" + to_string(_slot->itemAmount);
+		_line += _slot->item->GetID() + ":" + to_string(_slot->itemAmount) + "\n";
 	}
 	return _line;
 }

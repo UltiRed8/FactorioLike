@@ -4,6 +4,7 @@
 #include "Entity.h"
 #include "Inventory.h"
 #include "Menu.h"
+#include "Machine.h"
 
 using namespace std;
 
@@ -26,7 +27,12 @@ public:
 	~Player();
 
 public:
-	Inventory& GetInventory() {
+	void SetCurrentMenu(Menu* _newMenu)
+	{
+		currentMenu = _newMenu;
+	}
+	Inventory& GetInventory()
+	{
 		return inventory;
 	}
 	float GetHunger() const
@@ -53,10 +59,10 @@ private:
 	void ToggleInventory();
 	void BuildMenu();
 	void EscapeMenu();
-	void DeleteMenu();
-	void CloseMenu();
 
 public:
+	void CloseMenu();
+	void DeleteMenu();
 	void UpdateVital(const VitalType& _type, const float _amount) override;
 	virtual void DisplayStatistics(const bool _top = true, const bool _bottom = true) const override;
 	virtual string GetSaveLine() const override;

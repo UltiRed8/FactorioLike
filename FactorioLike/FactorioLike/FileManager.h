@@ -29,7 +29,6 @@ private:
     void SaveInventory(const Inventory& _inventory);
     void LoadMap(Map* _map);
     void LoadInventory(Inventory& _inventory);
-    vector<string> LineToParts(string _line);
 
 public:
     template<typename Type>

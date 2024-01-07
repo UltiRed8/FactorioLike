@@ -72,4 +72,5 @@ public:
 	void Tick();
 	virtual void Load(const vector<string>& _list) override;
 	virtual string GetSaveLine() const override;
+	void SwitchRecipe(Player* _player);
 };

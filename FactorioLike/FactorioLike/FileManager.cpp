@@ -80,7 +80,7 @@ void FileManager::LoadMap(Map* _map)
     vector<vector<Element*>>& _grid = _map->GetGrid();
     while (getline(_stream, _line))
     {
-        vector<string> _currentList = LineToParts(_line);
+        vector<string> _currentList = SplitString(_line, ':');
         if (_currentList[0] == "RessourceNode") _grid[stoi(_currentList[1])][stoi(_currentList[2])] = new RessourceNode(_currentList);
         else if (_currentList[0] == "Machine") _grid[stoi(_currentList[1])][stoi(_currentList[2])] = new Machine(_currentList);
         else if (_currentList[0] == "Player")
@@ -104,21 +104,7 @@ void FileManager::LoadInventory(Inventory& _inventory)
     while (getline(_stream, _line))
     {
         if (_line.empty()) continue;
-        vector<string> _currentList = LineToParts(_line);
+        vector<string> _currentList = SplitString(_line, ':');
         _inventory.AddItem(new Item(_currentList[0]), stoi(_currentList[1]));
     }
-}
-
-vector<string> FileManager::LineToParts(string _line)
-{
-    vector<string> _list = vector<string>();
-    string _word;
-    while (_line.find(':') != string::npos)
-    {
-        _word = _line.substr(0, _line.find_first_of(':'));
-        _line = _line.substr(_line.find_first_of(':') + 1, _line.length());
-        _list.push_back(_word);
-    }
-    _list.push_back(_line);
-    return _list;
 }

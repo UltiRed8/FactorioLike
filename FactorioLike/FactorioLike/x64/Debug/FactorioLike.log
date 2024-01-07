@@ -1,7 +1,2 @@
 ﻿  Machine.cpp
-  Machine.h
-  Menu.cpp
-  Génération de code en cours...
-  LINK : F:\github\FactorioLike\FactorioLike\x64\Debug\FactorioLike.exe introuvable ou non généré par la dernière édition de liens incrémentielle ; édition de liens complète en cours
-x64\Debug\Machine.obj : warning LNK4042: objet spécifié plus d'une fois ; définitions supplémentaires ignorées
   FactorioLike.vcxproj -> F:\github\FactorioLike\FactorioLike\x64\Debug\FactorioLike.exe

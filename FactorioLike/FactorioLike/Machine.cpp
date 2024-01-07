@@ -40,7 +40,6 @@ void Machine::UpdateSign()
 	else if (type == MT_CRAFTER) sign = 'C';
 	else if (type == MT_SMELTER) sign = 'S';
 	else if (type == MT_COLLECTOR) sign = 'O';
-
 }
 
 void Machine::InitRecipes() {
@@ -67,7 +66,6 @@ void Machine::InitRecipes() {
 
 void Machine::Execute()
 {
-
 	Inventory& _inventory = GameManager::GetInstance()->GetPlayer()->GetInventory();
 	if (type == MT_COLLECTOR)
 	{
@@ -102,6 +100,19 @@ void Machine::SelectRecipe(const Recipe _recipeToSet)
 {
 	if (type == MT_NONE) return;
 	if (!HasRecipes()) return;
+	if (type == MT_MANUALCRAFTER)
+	{
+		for (const Recipe& _recipe : availableRecipes)
+		{
+			if (_recipe == _recipeToSet)
+			{
+				selectedRecipe = _recipe;
+				Execute();
+				return;
+			}
+		}
+		return;
+	}
 	for (const Recipe& _recipe : availableRecipes)
 	{
 		if (_recipe == _recipeToSet)
@@ -111,6 +122,32 @@ void Machine::SelectRecipe(const Recipe _recipeToSet)
 		}
 	}
 	ComputeDelay();
+}
+
+void Machine::SwitchRecipe(Player* _player)
+{
+	_player->DeleteMenu();
+	vector<Button> _buttons;
+	for (Recipe& _recipe : availableRecipes)
+	{
+		string _textInput;
+		for (map<string, int>::iterator _iterator = _recipe.inputs.begin(); _iterator != _recipe.inputs.end(); _iterator++)
+		{
+			if (!_textInput.empty()) _textInput += " + ";
+			_textInput += Item(_iterator->first).GetName() + "*" + to_string(_iterator->second);
+		}
+		string _textOutput;
+		for (map<string, int>::iterator _iterator = _recipe.outputs.begin(); _iterator != _recipe.outputs.end(); _iterator++)
+		{
+			if (!_textOutput.empty()) _textOutput += " + ";
+			_textOutput += Item(_iterator->first).GetName() + "*" + to_string(_iterator->second);
+		}
+		_buttons.push_back(Button(_textInput + " -> " + _textOutput, [&]() {
+			SelectRecipe(_recipe);
+		}));
+	}
+	string _list[] = {"Unknown", "Etabli", "Constructeur", "Fondrie", "Collecteur"};
+	_player->SetCurrentMenu(new Menu(_list[type], _buttons));
 }
 
 void Machine::ComputeDelay()
@@ -150,16 +187,27 @@ void Machine::Load(const vector<string>& _list)
 	type = static_cast<MachineType>(stoi(_list[3]));
 	InitRecipes();
 	const int _selectedRecipe = stoi(_list[4]);
-	if (_selectedRecipe != -1) selectedRecipe = availableRecipes[_selectedRecipe];
-	const vector<string> _nodeList = { _list.begin() + 5, _list.end() };
-	node = new RessourceNode(_nodeList);
+	if (static_cast<const int> (availableRecipes.size()) >= 1 && _selectedRecipe != -1) selectedRecipe = availableRecipes[_selectedRecipe];
+	if (type == MT_COLLECTOR)
+	{
+		const vector<string> _nodeList = { _list.begin() + 5, _list.end() };
+		node = new RessourceNode(_nodeList);
+	}
 	ComputeDelay();
 }
 
 string Machine::GetSaveLine() const
 {
-	if (!node) return "";
-	return "Machine:" + to_string(location.posX) + ":" + to_string(location.posY) + ":" + to_string(type) + ":" + to_string(selectedRecipe.id) + ":" + node->GetSaveLine();
+	int _index = 0;
+	for (const Recipe& _recipe : availableRecipes)
+	{
+		if (_recipe == selectedRecipe) break;
+		else _index++;
+	}
+
+	string _line = "Machine:" + to_string(location.posX) + ":" + to_string(location.posY) + ":" + to_string(type) + ":" + to_string(_index);
+	if (node) return _line += ":" + node->GetSaveLine();
+	return _line;
 }
 
 bool operator == (const Recipe& _recipe1, const	Recipe& _recipe2)

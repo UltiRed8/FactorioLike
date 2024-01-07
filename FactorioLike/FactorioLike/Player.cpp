@@ -43,9 +43,15 @@ void Player::InitKeybinds()
 	_manager->AddKeybind({ 'b' }, [&]() { BuildMenu(); });
 	_manager->AddKeybind({ 27 }, [&]() {
 		if (IsInInventory()) ToggleInventory();
+		else if (state == PS_BUILDING) CloseMenu();
 		else EscapeMenu();
 	});
-	_manager->AddKeybind({ 32, '\n' }, [&]() { if (currentMenu) currentMenu->ExecuteSelected(); });
+	_manager->AddKeybind({ 32, '\n' }, [&]() { if (currentMenu)
+		{
+			currentMenu->ExecuteSelected();
+			CloseMenu();
+		}
+	});
 }
 
 Player::Player(const float _maxHunger, const float _maxThirst, const float _maxHp) : Entity(_maxHp, GREEN "P" COLORRESET)
@@ -133,7 +139,7 @@ void Player::EscapeMenu()
 		DeleteMenu();
 		vector<Button> _buttons =
 		{
-			Button("Reprendre", [&]() { CloseMenu(); }),
+			Button("Reprendre", nullptr),
 			Button("Sauvegarder", [&]() { GameManager::GetInstance()->SaveGame(); }),
 			Button("Charger", [&]() { GameManager::GetInstance()->LoadGame(); }),
 			Button("Quitter", [&]() { GameManager::GetInstance()->SetWantsToQuit(true); }),
@@ -175,18 +181,39 @@ void Player::Direction(const Location& _direction)
 		_target += _direction;
 		Element* _element = GameManager::GetInstance()->GetMap()->GetElementAt(_target);
 		RessourceNode* _ressourceNode;
+		Machine* _machine;
 		if (_ressourceNode = dynamic_cast<RessourceNode*>(_element))
 		{
 			const int _miningByHandsQuantity = 1;
 			const string _ressourceName = _ressourceNode->GetType().GetName();
 			string _message = "Interaction effectuée: Ressource Node " + _ressourceNode->GetStringNodeRarity() + " (" + _ressourceName + ")";
-			if (_ressourceNode->GetToolsIDToCollect() == "" || inventory.ContainItem(_ressourceNode->GetToolsIDToCollect(), _miningByHandsQuantity))
+			string _toolsToGet = _ressourceNode->GetToolsIDToCollect();
+			vector<string> _listOfToolsID = SplitString(_toolsToGet, ' ');
+			if (static_cast<const int>(_listOfToolsID.size()) == 0)
 			{
 				inventory.AddItem(new Item(_ressourceNode->GetType()), _miningByHandsQuantity);
 				_message += "\n+ " + to_string(_miningByHandsQuantity) + " " + _ressourceName + "\n";
+				GameManager::GetInstance()->SetGameMessage(_message, 1);
+				return;
 			}
-			else _message += "\nVous n'avez pas l'outil nécessaire pour récupérer la ressource !\n";
+			for (const string& _toolID : _listOfToolsID)
+			{
+				if (inventory.ContainItem(_toolID, 1))
+				{
+					inventory.AddItem(new Item(_ressourceNode->GetType()), _miningByHandsQuantity);
+					_message += "\n+ " + to_string(_miningByHandsQuantity) + " " + _ressourceName + "\n";
+					GameManager::GetInstance()->SetGameMessage(_message, 1);
+					return;
+				}
+			}
+			_message += "\nVous n'avez pas l'outil nécessaire pour récupérer la ressource !\n";
 			GameManager::GetInstance()->SetGameMessage(_message, 1);
+		}
+		else if (_machine = dynamic_cast<Machine*>(_element))
+		{
+			if (!_machine->HasRecipes()) return;
+			state = PS_BUILDING;
+			_machine->SwitchRecipe(this);
 		}
 	}
 }
