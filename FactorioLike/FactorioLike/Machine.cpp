@@ -67,16 +67,34 @@ void Machine::InitRecipes() {
 
 void Machine::Execute()
 {
+
+	Inventory& _inventory = GameManager::GetInstance()->GetPlayer()->GetInventory();
 	if (type == MT_COLLECTOR)
 	{
-		GameManager::GetInstance()->GetPlayer()->GetInventory().AddItem(new Item(node->GetType()), 1);
+		_inventory.AddItem(new Item(node->GetType()), 1);
 	}
 	else
 	{
-		// TODO faire avec selectedRecipe
-		// TODO verifier si le joueur as ce qu'il faut
-		// TODO enlever l'input de l'inventaire du joueur
-		// TODO donner l'output à l'inventaire du joueur
+		bool _hasEverything = true;
+		for (map<string,int>::iterator _iterator = selectedRecipe.inputs.begin(); _iterator != selectedRecipe.inputs.end(); _iterator++)
+		{
+			if (!_inventory.ContainItem(_iterator->first, _iterator->second))
+			{
+				_hasEverything = false;
+				break;
+			}
+		}
+		if (_hasEverything)
+		{
+			for (map<string, int>::iterator _iterator = selectedRecipe.inputs.begin(); _iterator != selectedRecipe.inputs.end(); _iterator++)
+			{
+				_inventory.RemoveItem(new Item(_iterator->first), _iterator->second);
+			}
+			for (map<string, int>::iterator _iterator = selectedRecipe.outputs.begin(); _iterator != selectedRecipe.outputs.end(); _iterator++)
+			{
+				_inventory.AddItem(new Item(_iterator->first), _iterator->second);
+			}
+		}
 	}
 }
 
