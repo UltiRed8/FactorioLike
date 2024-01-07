@@ -20,6 +20,8 @@ Machine::Machine(const vector<string>& _list) : Buildable(-1.0f, "?")
 Machine::Machine(const MachineType _type) : Buildable(-1.0f, "?")
 {
 	type = _type;
+	InitRecipes();
+	ComputeDelay();
 	UpdateSign();
 	delay = currentDelay = -1;
 	node = nullptr;
@@ -118,10 +120,10 @@ void Machine::SelectRecipe(const Recipe _recipeToSet)
 		if (_recipe == _recipeToSet)
 		{
 			selectedRecipe = _recipe;
+			ComputeDelay();
 			return;
 		}
 	}
-	ComputeDelay();
 }
 
 void Machine::SwitchRecipe(Player* _player)
@@ -170,6 +172,7 @@ void Machine::ComputeDelay()
 
 void Machine::Tick()
 {
+	if (type == MT_MANUALCRAFTER) return;
 	if (type == MT_NONE) return;
 	if (delay < 0) return;
 	currentDelay--;

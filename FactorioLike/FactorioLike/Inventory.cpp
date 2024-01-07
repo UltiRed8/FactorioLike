@@ -97,7 +97,6 @@ bool Inventory::RemoveItem(Item* _item, const int _amount)
 
 void Inventory::MoveCursor(const Location& _deltaLoc)
 {
-	// TODO a fix
 	if (slotsUsed <= 1) return;
 	cursorLocation += _deltaLoc;
 	const int _minimalAmountInColumn = static_cast<int>(floor(slotsUsed / itemsPerLine - 1));

@@ -20,6 +20,8 @@ class Player : public Entity
 	ProgessBar hunger;
 	ProgessBar thirst;
 	Menu* currentMenu;
+	int wantsToBuild;
+	vector<map<string, int>> machinesCosts;
 
 public:
 	Player();
@@ -59,6 +61,9 @@ private:
 	void ToggleInventory();
 	void BuildMenu();
 	void EscapeMenu();
+	void PlaceBuildable(const Location& _direction);
+	bool UseRessourceForBuildable(map<string, int>& _buildableCost);
+	void InitMachinesCosts();
 
 public:
 	void CloseMenu();

@@ -47,6 +47,11 @@ class Machine : public Buildable
 	RessourceNode* node;
 
 public:
+	void SetNode(RessourceNode* _node)
+	{
+		node = _node;
+		ComputeDelay();
+	}
 	vector<Recipe> GetAvailableRecipes() const
 	{
 		return availableRecipes;
