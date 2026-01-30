@@ -4,7 +4,7 @@
 GameManager::GameManager()
 {
 	lastUpdatedTick = uint64_t();
-	message = new GameMessage("Bienvenue sur le jeu FactorioLike !", ticksAmount, 5);
+	message = new GameMessage("Welcome to FactorioLike!", ticksAmount, 5);
 	saveName = "";
 	ticksAmount = 20;
 	player = nullptr;

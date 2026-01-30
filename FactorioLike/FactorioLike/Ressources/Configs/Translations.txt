@@ -1,18 +1,18 @@
-wood:Bois
-stick:Baton
-crafter:Etabli
-wooden_pickaxe:Pioche en bois
-wooden_sword:Epee en bois
-stone:Pierre
-coal:Charbon
-stone_pickaxe:Pioche en pierre
-stone_sword:Epee en pierre
-furnace:Four
-iron_ore:Minerais de fer
-iron_ingot:Fer
-iron_rod:Tige de fer
-iron_pickaxe:Pioche en fer
-collector:Recuperateur de ressources
-auto_smelter:Four automatique
-auto_crafter:Constructeur automatique
-heavy_iron_sword:Epee en fer lourde (ENDGAME)
+wood:Wood
+stick:Stick
+crafter:CraftingTable
+wooden_pickaxe:Wooden Pickaxe
+wooden_sword:Wooden Sword
+stone:Stone
+coal:Coal
+stone_pickaxe:Stone Pickaxe
+stone_sword:Stone Sword
+furnace:Furnace
+iron_ore:Iron Ore
+iron_ingot:Iron Ingot
+iron_rod:Iron Rod
+iron_pickaxe:Iron Pickaxe
+collector:Collector
+auto_smelter:Smelter
+auto_crafter:Constructor
+heavy_iron_sword:Heavy Iron Sword (ENDGAME)

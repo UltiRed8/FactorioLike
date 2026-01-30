@@ -25,7 +25,7 @@ void RessourceNode::Load(const vector<string>& _list)
 
 string RessourceNode::GetSaveLine() const
 {
-	return "RessourceNode:" + to_string(location.posX) + ":" + to_string(location.posY) + ":" + to_string(rarity) + ":" + type.GetID();
+	return "ResourceNode:" + to_string(location.posX) + ":" + to_string(location.posY) + ":" + to_string(rarity) + ":" + type.GetID();
 }
 
 void RessourceNode::UpdateSign()

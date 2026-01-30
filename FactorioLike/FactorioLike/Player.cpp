@@ -131,10 +131,10 @@ void Player::BuildMenu()
 		state = PS_BUILDING;
 		DeleteMenu();
 		vector<Button> _buttons;
-		_buttons.push_back(Button("Etabli (Bois*20)", [&]() { wantsToBuild = 1; }));
-		_buttons.push_back(Button("Constructeur (Bois*50 + Baton*20 + Pioche en bois*5 + Epee en bois*2)", [&]() { wantsToBuild = 2; }));
-		_buttons.push_back(Button("Fondrie (Pierre*20 + Bois*15)", [&]() { wantsToBuild = 3; }));
-		_buttons.push_back(Button("Collecteur de ressources (Bois*10 + Pioche en bois*8)", [&]() { wantsToBuild = 4; }));
+		_buttons.push_back(Button("CraftingTable (Wood*20)", [&]() { wantsToBuild = 1; }));
+		_buttons.push_back(Button("Constructor (Wood*50 + Stick*20 + Wooden Pickaxe*5 + Wooden Sword*2)", [&]() { wantsToBuild = 2; }));
+		_buttons.push_back(Button("Smelter (Stone*20 + Wood*15)", [&]() { wantsToBuild = 3; }));
+		_buttons.push_back(Button("Collector (Wood*10 + Wooden Pickaxe*8)", [&]() { wantsToBuild = 4; }));
 		currentMenu = new Menu("BUILD MENU", _buttons);
 	}
 	else if (state == PS_BUILDING)
@@ -177,10 +177,10 @@ void Player::EscapeMenu()
 		DeleteMenu();
 		vector<Button> _buttons =
 		{
-			Button("Reprendre", nullptr),
-			Button("Sauvegarder", [&]() { GameManager::GetInstance()->SaveGame(); }),
-			Button("Charger", [&]() { GameManager::GetInstance()->LoadGame(); }),
-			Button("Quitter", [&]() { GameManager::GetInstance()->SetWantsToQuit(true); }),
+			Button("Resume", nullptr),
+			Button("Save", [&]() { GameManager::GetInstance()->SaveGame(); }),
+			Button("Load", [&]() { GameManager::GetInstance()->LoadGame(); }),
+			Button("Quit", [&]() { GameManager::GetInstance()->SetWantsToQuit(true); }),
 		};
 		currentMenu = new Menu("PAUSE", _buttons);
 	}
@@ -240,7 +240,7 @@ void Player::Direction(const Location& _direction)
 		{
 			const int _miningByHandsQuantity = 1;
 			const string _ressourceName = _ressourceNode->GetType().GetName();
-			string _message = "Interaction effectuée: Ressource Node " + _ressourceNode->GetStringNodeRarity() + " (" + _ressourceName + ")";
+			string _message = "Interaction done: Resource Node " + _ressourceNode->GetStringNodeRarity() + " (" + _ressourceName + ")";
 			string _toolsToGet = _ressourceNode->GetToolsIDToCollect();
 			vector<string> _listOfToolsID = SplitString(_toolsToGet, ' ');
 			if (_toolsToGet.empty())
@@ -260,7 +260,7 @@ void Player::Direction(const Location& _direction)
 					return;
 				}
 			}
-			_message += "\nVous n'avez pas l'outil nécessaire pour récupérer la ressource !\n";
+			_message += "\nYou do not have the necessary tools to get that resource!\n";
 			GameManager::GetInstance()->SetGameMessage(_message, 1);
 		}
 		else if (_machine = dynamic_cast<Machine*>(_element))
@@ -283,13 +283,13 @@ void Player::PlaceBuildable(const Location& _direction)
 	{
 		if (!_elementAtTarget || !dynamic_cast<RessourceNode*>(_elementAtTarget))
 		{
-			_gm->SetGameMessage("Vous devez placer le collecteur sur une ressource !", 1);
+			_gm->SetGameMessage("You need to place a collector on a resource!", 1);
 		}
 		else
 		{
 			if (!UseRessourceForBuildable(machinesCosts[static_cast<const int>(wantsToBuild) - 1]))
 			{
-				_gm->SetGameMessage("Vous n'avez pas les ressources nécessaires !", 1);
+				_gm->SetGameMessage("You do not have the resources needed!", 1);
 			}
 			else
 			{
@@ -303,13 +303,13 @@ void Player::PlaceBuildable(const Location& _direction)
 	}
 	if (_elementAtTarget)
 	{
-		_gm->SetGameMessage("Vous devez placer la machine sur un emplacement vide !", 1);
+		_gm->SetGameMessage("You need to place the machine on an empty tile!", 1);
 	}
 	else
 	{
 		if (!UseRessourceForBuildable(machinesCosts[static_cast<const int>(wantsToBuild) - 1]))
 		{
-			_gm->SetGameMessage("Vous n'avez pas les ressources nécessaires !", 1);
+			_gm->SetGameMessage("You do not have the resources needed!", 1);
 		}
 		else
 		{

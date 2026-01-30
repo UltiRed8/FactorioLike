@@ -25,11 +25,11 @@ public:
     }
     string GetStringNodeRarity() const
     {
-        if (rarity == NR_NONE) return "Aucune";
-        else if (rarity == NR_COMMUN) return "Commun";
+        if (rarity == NR_NONE) return "None";
+        else if (rarity == NR_COMMUN) return "Common";
         else if (rarity == NR_RARE) return "Rare";
         else if (rarity == NR_EPIC) return "Epic";
-        else if (rarity == NR_LEGENDARY) return "Légendaire";
+        else if (rarity == NR_LEGENDARY) return "Legendary";
         else return "";
     }
     string GetToolsIDToCollect() const

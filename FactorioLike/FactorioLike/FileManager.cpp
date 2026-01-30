@@ -5,7 +5,7 @@
 string FileManager::GetLineStartingWithInConfig(const string& _startWith, const string& _path)
 {
     ifstream _stream = ifstream(CONFIGS + _path);
-    if (!_stream) throw exception(("Le fichier de config " + _path + " n'a pas été trouvé").data());
+    if (!_stream) throw exception(("Config file " + _path + " not found").data());
     string _line;
     while (getline(_stream, _line))
     {
@@ -27,7 +27,7 @@ void FileManager::SaveMap(const vector<vector<Element*>>& _map)
     ofstream _stream(SAVESLOT + saveName + ".map");
     if (!_stream)
     {
-        string _error = "Erreur lors de la création de la sauvegarde MAP " + saveName + " !";
+        string _error = "Error while creating map save \"" + saveName + "\"!";
         throw exception(_error.c_str());
     }
     for (const vector<Element*> _line : _map)
@@ -47,7 +47,7 @@ void FileManager::SaveInventory(const Inventory& _inventory)
     ofstream _stream(SAVESLOT + saveName + ".inventory");
     if (!_stream)
     {
-        string _error = "Erreur lors de la création de la sauvegarde INVENTORY " + saveName + " !";
+        string _error = "Error while creating inventory save \"" + saveName + "\"!";
         throw exception(_error.c_str());
     }
     _stream << _inventory.GetSaveLine() << endl;
@@ -73,7 +73,7 @@ void FileManager::LoadMap(Map* _map)
     ifstream _stream(SAVESLOT + saveName + ".map");
     if (!_stream)
     {
-        string _error = "Erreur lors du chargement de la sauvegarde MAP " + saveName + " !";
+        string _error = "Error while loading map save \"" + saveName + "\"!";
         throw exception(_error.c_str());
     }
     string _line;
@@ -97,7 +97,7 @@ void FileManager::LoadInventory(Inventory& _inventory)
     ifstream _stream(SAVESLOT + saveName + ".inventory");
     if (!_stream)
     {
-        string _error = "Erreur lors du chargement de la sauvegarde INVENTORY " + saveName + " !";
+        string _error = "Error while loading inventory save \"" + saveName + "\"!";
         throw exception(_error.c_str());
     }
     string _line;

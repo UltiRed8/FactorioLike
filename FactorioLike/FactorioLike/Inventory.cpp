@@ -138,7 +138,7 @@ void Inventory::DisplayInventory()
 	cout << GREEN;
 	const int _dividerSize = (((_longestName + 4)+1) * itemsPerLine)-1;
 	for (int _i = 0; _i < _dividerSize / 2 - 6; _i++) cout << "=";
-	cout << " INVENTAIRE ";
+	cout << " INVENTORY ";
 	for (int _i = 0; _i < _dividerSize / 2 - 5; _i++) cout << "=";
 	cout << COLORRESET << endl << endl;
 	do

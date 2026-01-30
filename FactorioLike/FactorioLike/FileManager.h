@@ -36,7 +36,7 @@ public:
     {
         vector<Type> _list;
         ifstream _stream = ifstream(CONFIGS + _path);
-        if (!_stream) throw exception(("Le fichier de config " + _path + " n'a pas été trouvé").data());
+        if (!_stream) throw exception(("Config file " + _path + " not found").data());
         string _line;
         while (getline(_stream, _line))
         {

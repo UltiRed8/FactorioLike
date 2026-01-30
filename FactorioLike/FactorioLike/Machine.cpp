@@ -148,7 +148,7 @@ void Machine::SwitchRecipe(Player* _player)
 			SelectRecipe(_recipe);
 		}));
 	}
-	string _list[] = {"Unknown", "Etabli", "Constructeur", "Fondrie", "Collecteur"};
+	string _list[] = {"Unknown", "CraftingTable", "Constructor", "Smelter", "Collector"};
 	_player->SetCurrentMenu(new Menu(_list[type], _buttons));
 }
 

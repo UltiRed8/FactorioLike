@@ -19,7 +19,7 @@ int main()
 {
 	locale::global(locale(""));
 	
-	const string _save = GetInput<string>("Entrez le nom de la sauvegarde sur laquelle jouer :\n> ");
+	const string _save = GetInput<string>("Enter the name of the save that you want to use:\n> ");
 	if (!_save.empty())
 	{
 		GameManager::GetInstance()->SetSaveName(_save);
