@@ -32,7 +32,7 @@ Player::~Player()
 void Player::InitKeybinds()
 {
 	InputManager* _manager = InputManager::GetInstance();
-	_manager->AddKeybind({ 'z', 72 }, [&]() {
+	_manager->AddKeybind({ 'w', 72 }, [&]() {
 		if (currentMenu)
 		{
 			currentMenu->ChangeSelected(-1);
@@ -41,7 +41,7 @@ void Player::InitKeybinds()
 		if (!IsInInventory()) Direction({ -1, 0 });
 		else inventory.MoveCursor({ 0, -1 });
 		});
-	_manager->AddKeybind({ 'q', 75 }, [&]() {
+	_manager->AddKeybind({ 'a', 75 }, [&]() {
 		if (!IsInInventory()) Direction({ 0, -1 });
 		else inventory.MoveCursor({ -1, 0 });
 		});
